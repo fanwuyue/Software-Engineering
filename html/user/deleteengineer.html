@@ -14,39 +14,46 @@
   <link rel="stylesheet" href="../static/css/background.css">
   <link rel="stylesheet" href="../static/css/style.css">
   <script src="../static/js/background.js"></script>
-  <title>工程师主页</title>
+  <title>删除工程师资料</title>
 </head>
-<body>
+<body style="overflow-x: auto; overflow-x: auto;">
   <!-- 导航栏 -->
   <nav class="navbar navbar-default" role="navigation">
     <div class="container-fluid">
-    <div class="navbar-header">
-        <a class="navbar-brand" href="./index.html">用户首页</a>
+      <div class="navbar-header">
+          <a class="navbar-brand" href="#">删除工程师资料</a>
+      </div>
+      <div>
+        <div class="nav navbar-nav navbar-right">
+          <ul class="nav navbar-nav">
+            <li><a href="./index.html">返回主页</a></li>
+            <li><a href="#"><i class="glyphicon glyphicon-log-in"></i>登出系统</a></li>
+          </ul>
+        </div>
+      </div>
     </div>
-    <div>
-        <ul class="nav navbar-nav">
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    工程师选项
-                    <b class="caret"></b>
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a href="./addengineer.html">输入工程师资料</a></li>
-                    <li><a href="./updateengineer.html">修改工程师资料</a></li>
-                    <li><a href="./sortengineer.html">排序工程师资料</a></li>
-                    <li><a href="./searchengineer.html">查询工程师资料</a></li>
-                    <li><a href="./deleteengineer.html">删除工程师资料</a></li>
-                </ul>
-            </li>
-            <li><a href="./calculate.html">计算个人月薪</a></li>
-        </ul>
+</nav>
 
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="#"><i class="glyphicon glyphicon-log-in"></i>登出系统</a></li>
-        </ul>
-    </div>
-    </div>
-  </nav>
+<div class="deleteengineer-form-border">
+  <div class="input-group" style="margin-left: 20%; margin-right: 20%;">
+      <span class="input-group-addon">删除选项</span>
+      <select id="type" class="form-control">
+        <option value="0">编号</option>
+        <option value="1">姓名</option>
+      </select>
+  </div>
+</div>
+
+<div class="deleteengineer-form-border">
+  <div class="input-group" style="margin-left: 20%; margin-right: 20%;">
+      <span class="input-group-addon">内容</span>
+      <input class="form-control" type="text" id="name" placeholder="姓名">
+  </div>
+</div>
+
+<div >
+  <button type="button" class="btn btn-success" style="margin-left: 45%; margin-right: 45% " id="delete">删除信息</button>
+</div>
 
 </body>
 </html>
