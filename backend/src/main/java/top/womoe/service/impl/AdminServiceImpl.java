@@ -7,7 +7,6 @@ import top.womoe.model.Admin;
 import top.womoe.model.AdminExample;
 import top.womoe.service.AdminService;
 
-import javax.swing.text.StringContent;
 import java.util.List;
 
 @Service
@@ -26,7 +25,7 @@ public class AdminServiceImpl implements AdminService {
         return adminList.get(0);
     }
 
-    public boolean verifyAdmin(String username, String password){
+    public boolean verifyPassword(String username, String password){
         AdminExample adminExample = new AdminExample();
         adminExample.createCriteria().andAdminUsernameEqualTo(username);
         List<Admin> adminList = adminMapper.selectByExample(adminExample);
@@ -36,11 +35,14 @@ public class AdminServiceImpl implements AdminService {
         return false;
     }
 
+    public boolean verifyLogin(String username, String token) {
+        return getAdmin(username).getAdminToken().equals(token);
+    }
+
     public boolean updateAdmin(Admin admin) {
         return (1 == adminMapper.updateByPrimaryKey(admin));
     }
 
-    @Override
     public boolean updateToken(String username, String token) {
         Admin admin = getAdmin(username);
         admin.setAdminToken(token);
