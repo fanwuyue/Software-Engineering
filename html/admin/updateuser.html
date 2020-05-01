@@ -10,18 +10,15 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-  <!-- 导入图片背景 -->
-  <link rel="stylesheet" href="../static/css/background.css">
   <link rel="stylesheet" href="../static/css/style.css">
-  <script src="../static/js/background.js"></script>
-  <title>搜索工程师资料</title>
+  <title>搜索用户资料</title>
 </head>
 <body style="overflow-y: auto;">
   <!-- 导航栏 -->
   <nav class="navbar navbar-default" role="navigation">
     <div class="container-fluid">
       <div class="navbar-header">
-          <a class="navbar-brand" href="#">搜索工程师资料</a>
+          <a class="navbar-brand" href="#">修改用户资料</a>
       </div>
       <div>
           <form class="navbar-form navbar-left" >
@@ -54,5 +51,67 @@
     </div>
 </nav>
 
+<!-- 添加信息块 -->
+  <div class="base-form-border">
+    <div class="input-group" style="margin-left: 20%; margin-right: 20%;">
+        <span class="input-group-addon">编号</span>
+        <input class="form-control" type="text" id="id" placeholder="编号">
+    </div>
+  </div>
+
+  <div class="base-form-border">
+    <div class="input-group" style="margin-left: 20%; margin-right: 20%;">
+        <span class="input-group-addon">姓名</span>
+        <input class="form-control" type="text" id="name" placeholder="姓名">
+    </div>
+  </div>
+
+  <div class="base-form-border">
+    <div class="form-group" style="margin-left: 20%; margin-right: 20%;">
+      <span class="input-group-addon">性别</span>
+      <div style="background-color: rgba(255, 255, 255, 0.5);">
+        <label class="radio-inline" style="margin-right: 80%;">
+          <input type="radio" id="sex" name="sex" value="0">女
+        </label>
+        <label class="radio-inline">
+            <input type="radio" id="sex" name="sex" value="1">男
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <!-- 电话 -->
+  <div class="base-form-border">
+    <div class="input-group" style="margin-left: 20%; margin-right: 20%;">
+      <span class="input-group-addon">电话</span>
+      <input class="form-control" type="text" id="address" placeholder="地址">
+    </div>
+  </div>
+
+  <!-- 工龄 -->
+  <div class="base-form-border">
+    <div class="input-group" style="margin-left: 20%; margin-right: 20%;">
+      <span class="input-group-addon">工龄</span>
+      <select id="working_year" class="form-control">
+        <option value="1">1</option>
+      </select>
+    </div>
+  </div>
+
+  <div >
+    <button type="button" class="btn btn-success" style="margin-left: 45%; margin-right: 45% " id="submit">保存修改信息</button>
+  </div>
+
 </body>
+
+<script type="text/javascript">
+  $().ready(function(){
+    var working_year = document.getElementById("working_year");
+    str = "";
+    for(var i = 1; i <= 50; i++){
+      str += "<option value=" + i + ">" + i + "</option>";
+    }
+    working_year.innerHTML = str;
+});
+</script>
 </html>
