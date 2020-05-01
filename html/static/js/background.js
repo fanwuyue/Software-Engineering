@@ -8,7 +8,7 @@ $(document).ready(function() {
     var r = 800; /*星星的看起来的距离,值越大越远,可自行调制到自己满意的样子*/
     for (var i = 0; i < stars; i++) {
         var $star = $("<div/>").addClass("star");
-        console.log($star)
+
         $stars.append($star);
     }
     $(".star").each(function() {
@@ -18,7 +18,10 @@ $(document).ready(function() {
         cur.css({
             transformOrigin: "0 0 " + curR + "px",
             transform: " translate3d(0,0,-" + curR + "px) rotateY(" + (Math.random() * 360) + "deg) rotateX(" + (Math.random() * -50) + "deg) scale(" + s + "," + s + ")"
-
         })
     })
+
+    
+
+
 })
