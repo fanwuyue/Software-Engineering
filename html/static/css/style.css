@@ -16,3 +16,28 @@
 .login-input {
   opacity: 0.8
 }
+
+.addengineer-form-border {
+  margin-bottom: 2%;
+}
+
+.deleteengineer-form-border {
+  margin-bottom: 2%;
+}
+
+.calculate-form-border {
+  margin-bottom: 2%;
+}
+
+.base-form-border {
+  margin-bottom: 2%;
+}
+
+
+.addengineer-div {
+  position: relative;;
+  margin-top: 2.5%;
+  margin-left: 5%;
+  margin-right: 5%;
+  /* background-color: rgba(255, 255, 255, 0.3); */
+}
