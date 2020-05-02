@@ -11,27 +11,49 @@
   <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <link rel="stylesheet" href="../static/css/style.css">
-  <title>清空所有用户用户</title>
+  <title>删除用户资料</title>
 </head>
-<body>
+<body style="">
   <!-- 导航栏 -->
   <nav class="navbar navbar-default" role="navigation">
     <div class="container-fluid">
       <div class="navbar-header">
-          <a class="navbar-brand" href="#">清空用户</a>
+          <a class="navbar-brand" href="#">删除用户资料</a>
+      </div>
+
+      <div class="navbar-right">
+            <button type="button" class="btn btn-info" style="margin-top: 10%" id="quit">退出系统</button>
       </div>
       <div>
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="./index.html">返回首页</a></li>
-            <li><a href="#"><i class="glyphicon glyphicon-log-in"></i>登出系统</a></li>
+        <div class="nav navbar-nav navbar-right">
+          <ul class="nav navbar-nav">
+            <li><a href="./index.html">返回主页</a></li>
           </ul>
+        </div>
       </div>
     </div>
-  </nav>
+</nav>
 
-  <div >
-    <button type="button" class="btn btn-success" style="margin-left: 45%; margin-right: 45% " id="empty">清空所有用户</button>
+<div class="base-form-border">
+  <div class="input-group" style="margin-left: 20%; margin-right: 20%;">
+      <span class="input-group-addon">删除选项</span>
+      <select id="type" class="form-control">
+        <option value="0">编号</option>
+        <option value="1">姓名</option>
+      </select>
   </div>
+</div>
+
+<div class="base-form-border">
+  <div class="input-group" style="margin-left: 20%; margin-right: 20%;">
+      <span class="input-group-addon">内容</span>
+      <input class="form-control" type="text" id="name" placeholder="姓名">
+  </div>
+</div>
+
+<div >
+  <button type="button" class="btn btn-success" style="margin-left: 45%; margin-right: 45% " id="delete">删除信息</button>
+</div>
 
 </body>
 </html>
