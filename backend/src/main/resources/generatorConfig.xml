@@ -38,7 +38,7 @@
         <javaClientGenerator targetPackage="top.womoe.mapper"
                              targetProject="/Users/liuwomoe/Github/Software-Engineering/backend/src/main/java" type="XMLMAPPER" />
 
-        <table schema="sw_hr" tableName="sw_hr"  domainObjectName="HR">
+        <table schema="sw_hr" tableName="sw_hr"  domainObjectName="Hr">
             <!-- domainObjectName  指定生成的类的名字 -->
         </table>
     </context>

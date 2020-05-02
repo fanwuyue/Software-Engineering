@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="top.womoe.mapper.HRMapper">
-  <resultMap id="BaseResultMap" type="top.womoe.model.HR">
+<mapper namespace="top.womoe.mapper.HrMapper">
+  <resultMap id="BaseResultMap" type="top.womoe.model.Hr">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="hr_username" jdbcType="VARCHAR" property="hrUsername" />
     <result column="hr_password" jdbcType="VARCHAR" property="hrPassword" />
+    <result column="hr_number" jdbcType="VARCHAR" property="hrNumber" />
+    <result column="hr_name" jdbcType="VARCHAR" property="hrName" />
+    <result column="hr_sex" jdbcType="VARCHAR" property="hrSex" />
+    <result column="hr_seniority" jdbcType="INTEGER" property="hrSeniority" />
+    <result column="hr_telephone" jdbcType="VARCHAR" property="hrTelephone" />
     <result column="hr_token" jdbcType="VARCHAR" property="hrToken" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -66,9 +71,10 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, hr_username, hr_password, hr_token
+    id, hr_username, hr_password, hr_number, hr_name, hr_sex, hr_seniority, hr_telephone, 
+    hr_token
   </sql>
-  <select id="selectByExample" parameterType="top.womoe.model.HRExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="top.womoe.model.HrExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -92,19 +98,23 @@
     delete from sw_hr
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="top.womoe.model.HRExample">
+  <delete id="deleteByExample" parameterType="top.womoe.model.HrExample">
     delete from sw_hr
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="top.womoe.model.HR">
+  <insert id="insert" parameterType="top.womoe.model.Hr">
     insert into sw_hr (id, hr_username, hr_password, 
-      hr_token)
+      hr_number, hr_name, hr_sex, 
+      hr_seniority, hr_telephone, hr_token
+      )
     values (#{id,jdbcType=INTEGER}, #{hrUsername,jdbcType=VARCHAR}, #{hrPassword,jdbcType=VARCHAR}, 
-      #{hrToken,jdbcType=VARCHAR})
+      #{hrNumber,jdbcType=VARCHAR}, #{hrName,jdbcType=VARCHAR}, #{hrSex,jdbcType=VARCHAR}, 
+      #{hrSeniority,jdbcType=INTEGER}, #{hrTelephone,jdbcType=VARCHAR}, #{hrToken,jdbcType=VARCHAR}
+      )
   </insert>
-  <insert id="insertSelective" parameterType="top.womoe.model.HR">
+  <insert id="insertSelective" parameterType="top.womoe.model.Hr">
     insert into sw_hr
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -115,6 +125,21 @@
       </if>
       <if test="hrPassword != null">
         hr_password,
+      </if>
+      <if test="hrNumber != null">
+        hr_number,
+      </if>
+      <if test="hrName != null">
+        hr_name,
+      </if>
+      <if test="hrSex != null">
+        hr_sex,
+      </if>
+      <if test="hrSeniority != null">
+        hr_seniority,
+      </if>
+      <if test="hrTelephone != null">
+        hr_telephone,
       </if>
       <if test="hrToken != null">
         hr_token,
@@ -130,12 +155,27 @@
       <if test="hrPassword != null">
         #{hrPassword,jdbcType=VARCHAR},
       </if>
+      <if test="hrNumber != null">
+        #{hrNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="hrName != null">
+        #{hrName,jdbcType=VARCHAR},
+      </if>
+      <if test="hrSex != null">
+        #{hrSex,jdbcType=VARCHAR},
+      </if>
+      <if test="hrSeniority != null">
+        #{hrSeniority,jdbcType=INTEGER},
+      </if>
+      <if test="hrTelephone != null">
+        #{hrTelephone,jdbcType=VARCHAR},
+      </if>
       <if test="hrToken != null">
         #{hrToken,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="top.womoe.model.HRExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="top.womoe.model.HrExample" resultType="java.lang.Long">
     select count(*) from sw_hr
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -153,6 +193,21 @@
       <if test="record.hrPassword != null">
         hr_password = #{record.hrPassword,jdbcType=VARCHAR},
       </if>
+      <if test="record.hrNumber != null">
+        hr_number = #{record.hrNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.hrName != null">
+        hr_name = #{record.hrName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.hrSex != null">
+        hr_sex = #{record.hrSex,jdbcType=VARCHAR},
+      </if>
+      <if test="record.hrSeniority != null">
+        hr_seniority = #{record.hrSeniority,jdbcType=INTEGER},
+      </if>
+      <if test="record.hrTelephone != null">
+        hr_telephone = #{record.hrTelephone,jdbcType=VARCHAR},
+      </if>
       <if test="record.hrToken != null">
         hr_token = #{record.hrToken,jdbcType=VARCHAR},
       </if>
@@ -166,12 +221,17 @@
     set id = #{record.id,jdbcType=INTEGER},
       hr_username = #{record.hrUsername,jdbcType=VARCHAR},
       hr_password = #{record.hrPassword,jdbcType=VARCHAR},
+      hr_number = #{record.hrNumber,jdbcType=VARCHAR},
+      hr_name = #{record.hrName,jdbcType=VARCHAR},
+      hr_sex = #{record.hrSex,jdbcType=VARCHAR},
+      hr_seniority = #{record.hrSeniority,jdbcType=INTEGER},
+      hr_telephone = #{record.hrTelephone,jdbcType=VARCHAR},
       hr_token = #{record.hrToken,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="top.womoe.model.HR">
+  <update id="updateByPrimaryKeySelective" parameterType="top.womoe.model.Hr">
     update sw_hr
     <set>
       <if test="hrUsername != null">
@@ -180,16 +240,36 @@
       <if test="hrPassword != null">
         hr_password = #{hrPassword,jdbcType=VARCHAR},
       </if>
+      <if test="hrNumber != null">
+        hr_number = #{hrNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="hrName != null">
+        hr_name = #{hrName,jdbcType=VARCHAR},
+      </if>
+      <if test="hrSex != null">
+        hr_sex = #{hrSex,jdbcType=VARCHAR},
+      </if>
+      <if test="hrSeniority != null">
+        hr_seniority = #{hrSeniority,jdbcType=INTEGER},
+      </if>
+      <if test="hrTelephone != null">
+        hr_telephone = #{hrTelephone,jdbcType=VARCHAR},
+      </if>
       <if test="hrToken != null">
         hr_token = #{hrToken,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="top.womoe.model.HR">
+  <update id="updateByPrimaryKey" parameterType="top.womoe.model.Hr">
     update sw_hr
     set hr_username = #{hrUsername,jdbcType=VARCHAR},
       hr_password = #{hrPassword,jdbcType=VARCHAR},
+      hr_number = #{hrNumber,jdbcType=VARCHAR},
+      hr_name = #{hrName,jdbcType=VARCHAR},
+      hr_sex = #{hrSex,jdbcType=VARCHAR},
+      hr_seniority = #{hrSeniority,jdbcType=INTEGER},
+      hr_telephone = #{hrTelephone,jdbcType=VARCHAR},
       hr_token = #{hrToken,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>

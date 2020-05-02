@@ -14,7 +14,7 @@
 | 返回     | 内容及含义                                   |
 | -------- | -------------------------------------------- |
 | status   | success 、 failed       登陆成功 、 登录失败 |
-| password | “XXXX” 长度为17的字符串，用作登陆校验        |
+| cookie | “XXXX” 长度为17的字符串，用作登陆校验        |
 
 
 
@@ -38,6 +38,47 @@
 | status | success、failed 校验成功、校验失败 |
 
 
+### 添加人事员工信息
+
+| Path     | /admin/addHr |
+| -------- | ------------------ |
+| 请求类型 | POST                |
+
+| 请求参数 | 值类型及含义 |
+| -------- | ------------ |
+| 无       |              |
+
+请求体
+
+```
+{
+    "name": String, //姓名
+    "telephone": String, //电话
+    "username": String, //用户名 用于登录
+    "password": String, //密码 用于登录
+    "sex": String, //性别
+    "seniority": Int, //工龄
+    "number": String //编号
+}
+```
+
+| Cookies  | 值类型及含义            |
+| -------- | ----------------------- |
+| username | String 用户名           |
+| token    | String token 登录时获得 |
+
+| 返回   | 内容及含义                         |
+| ------ | ---------------------------------- |
+| status | success、failed 校验成功、校验失败 |
+| reason | 失败时返回，详细值含义看以下内容 |
+
+```
+    {
+        errorBody: '请求体有误',
+        notLogged: '没有登陆或cookie失效',
+        insertError: '插入失败'
+    }
+```
 
 ## 人事部门
 

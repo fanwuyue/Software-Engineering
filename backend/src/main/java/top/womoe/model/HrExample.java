@@ -3,14 +3,14 @@ package top.womoe.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HRExample {
+public class HrExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public HRExample() {
+    public HrExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -301,6 +301,346 @@ public class HRExample {
 
         public Criteria andHrPasswordNotBetween(String value1, String value2) {
             addCriterion("hr_password not between", value1, value2, "hrPassword");
+            return (Criteria) this;
+        }
+
+        public Criteria andHrNumberIsNull() {
+            addCriterion("hr_number is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andHrNumberIsNotNull() {
+            addCriterion("hr_number is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andHrNumberEqualTo(String value) {
+            addCriterion("hr_number =", value, "hrNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andHrNumberNotEqualTo(String value) {
+            addCriterion("hr_number <>", value, "hrNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andHrNumberGreaterThan(String value) {
+            addCriterion("hr_number >", value, "hrNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andHrNumberGreaterThanOrEqualTo(String value) {
+            addCriterion("hr_number >=", value, "hrNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andHrNumberLessThan(String value) {
+            addCriterion("hr_number <", value, "hrNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andHrNumberLessThanOrEqualTo(String value) {
+            addCriterion("hr_number <=", value, "hrNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andHrNumberLike(String value) {
+            addCriterion("hr_number like", value, "hrNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andHrNumberNotLike(String value) {
+            addCriterion("hr_number not like", value, "hrNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andHrNumberIn(List<String> values) {
+            addCriterion("hr_number in", values, "hrNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andHrNumberNotIn(List<String> values) {
+            addCriterion("hr_number not in", values, "hrNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andHrNumberBetween(String value1, String value2) {
+            addCriterion("hr_number between", value1, value2, "hrNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andHrNumberNotBetween(String value1, String value2) {
+            addCriterion("hr_number not between", value1, value2, "hrNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andHrNameIsNull() {
+            addCriterion("hr_name is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andHrNameIsNotNull() {
+            addCriterion("hr_name is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andHrNameEqualTo(String value) {
+            addCriterion("hr_name =", value, "hrName");
+            return (Criteria) this;
+        }
+
+        public Criteria andHrNameNotEqualTo(String value) {
+            addCriterion("hr_name <>", value, "hrName");
+            return (Criteria) this;
+        }
+
+        public Criteria andHrNameGreaterThan(String value) {
+            addCriterion("hr_name >", value, "hrName");
+            return (Criteria) this;
+        }
+
+        public Criteria andHrNameGreaterThanOrEqualTo(String value) {
+            addCriterion("hr_name >=", value, "hrName");
+            return (Criteria) this;
+        }
+
+        public Criteria andHrNameLessThan(String value) {
+            addCriterion("hr_name <", value, "hrName");
+            return (Criteria) this;
+        }
+
+        public Criteria andHrNameLessThanOrEqualTo(String value) {
+            addCriterion("hr_name <=", value, "hrName");
+            return (Criteria) this;
+        }
+
+        public Criteria andHrNameLike(String value) {
+            addCriterion("hr_name like", value, "hrName");
+            return (Criteria) this;
+        }
+
+        public Criteria andHrNameNotLike(String value) {
+            addCriterion("hr_name not like", value, "hrName");
+            return (Criteria) this;
+        }
+
+        public Criteria andHrNameIn(List<String> values) {
+            addCriterion("hr_name in", values, "hrName");
+            return (Criteria) this;
+        }
+
+        public Criteria andHrNameNotIn(List<String> values) {
+            addCriterion("hr_name not in", values, "hrName");
+            return (Criteria) this;
+        }
+
+        public Criteria andHrNameBetween(String value1, String value2) {
+            addCriterion("hr_name between", value1, value2, "hrName");
+            return (Criteria) this;
+        }
+
+        public Criteria andHrNameNotBetween(String value1, String value2) {
+            addCriterion("hr_name not between", value1, value2, "hrName");
+            return (Criteria) this;
+        }
+
+        public Criteria andHrSexIsNull() {
+            addCriterion("hr_sex is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andHrSexIsNotNull() {
+            addCriterion("hr_sex is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andHrSexEqualTo(String value) {
+            addCriterion("hr_sex =", value, "hrSex");
+            return (Criteria) this;
+        }
+
+        public Criteria andHrSexNotEqualTo(String value) {
+            addCriterion("hr_sex <>", value, "hrSex");
+            return (Criteria) this;
+        }
+
+        public Criteria andHrSexGreaterThan(String value) {
+            addCriterion("hr_sex >", value, "hrSex");
+            return (Criteria) this;
+        }
+
+        public Criteria andHrSexGreaterThanOrEqualTo(String value) {
+            addCriterion("hr_sex >=", value, "hrSex");
+            return (Criteria) this;
+        }
+
+        public Criteria andHrSexLessThan(String value) {
+            addCriterion("hr_sex <", value, "hrSex");
+            return (Criteria) this;
+        }
+
+        public Criteria andHrSexLessThanOrEqualTo(String value) {
+            addCriterion("hr_sex <=", value, "hrSex");
+            return (Criteria) this;
+        }
+
+        public Criteria andHrSexLike(String value) {
+            addCriterion("hr_sex like", value, "hrSex");
+            return (Criteria) this;
+        }
+
+        public Criteria andHrSexNotLike(String value) {
+            addCriterion("hr_sex not like", value, "hrSex");
+            return (Criteria) this;
+        }
+
+        public Criteria andHrSexIn(List<String> values) {
+            addCriterion("hr_sex in", values, "hrSex");
+            return (Criteria) this;
+        }
+
+        public Criteria andHrSexNotIn(List<String> values) {
+            addCriterion("hr_sex not in", values, "hrSex");
+            return (Criteria) this;
+        }
+
+        public Criteria andHrSexBetween(String value1, String value2) {
+            addCriterion("hr_sex between", value1, value2, "hrSex");
+            return (Criteria) this;
+        }
+
+        public Criteria andHrSexNotBetween(String value1, String value2) {
+            addCriterion("hr_sex not between", value1, value2, "hrSex");
+            return (Criteria) this;
+        }
+
+        public Criteria andHrSeniorityIsNull() {
+            addCriterion("hr_seniority is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andHrSeniorityIsNotNull() {
+            addCriterion("hr_seniority is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andHrSeniorityEqualTo(Integer value) {
+            addCriterion("hr_seniority =", value, "hrSeniority");
+            return (Criteria) this;
+        }
+
+        public Criteria andHrSeniorityNotEqualTo(Integer value) {
+            addCriterion("hr_seniority <>", value, "hrSeniority");
+            return (Criteria) this;
+        }
+
+        public Criteria andHrSeniorityGreaterThan(Integer value) {
+            addCriterion("hr_seniority >", value, "hrSeniority");
+            return (Criteria) this;
+        }
+
+        public Criteria andHrSeniorityGreaterThanOrEqualTo(Integer value) {
+            addCriterion("hr_seniority >=", value, "hrSeniority");
+            return (Criteria) this;
+        }
+
+        public Criteria andHrSeniorityLessThan(Integer value) {
+            addCriterion("hr_seniority <", value, "hrSeniority");
+            return (Criteria) this;
+        }
+
+        public Criteria andHrSeniorityLessThanOrEqualTo(Integer value) {
+            addCriterion("hr_seniority <=", value, "hrSeniority");
+            return (Criteria) this;
+        }
+
+        public Criteria andHrSeniorityIn(List<Integer> values) {
+            addCriterion("hr_seniority in", values, "hrSeniority");
+            return (Criteria) this;
+        }
+
+        public Criteria andHrSeniorityNotIn(List<Integer> values) {
+            addCriterion("hr_seniority not in", values, "hrSeniority");
+            return (Criteria) this;
+        }
+
+        public Criteria andHrSeniorityBetween(Integer value1, Integer value2) {
+            addCriterion("hr_seniority between", value1, value2, "hrSeniority");
+            return (Criteria) this;
+        }
+
+        public Criteria andHrSeniorityNotBetween(Integer value1, Integer value2) {
+            addCriterion("hr_seniority not between", value1, value2, "hrSeniority");
+            return (Criteria) this;
+        }
+
+        public Criteria andHrTelephoneIsNull() {
+            addCriterion("hr_telephone is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andHrTelephoneIsNotNull() {
+            addCriterion("hr_telephone is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andHrTelephoneEqualTo(String value) {
+            addCriterion("hr_telephone =", value, "hrTelephone");
+            return (Criteria) this;
+        }
+
+        public Criteria andHrTelephoneNotEqualTo(String value) {
+            addCriterion("hr_telephone <>", value, "hrTelephone");
+            return (Criteria) this;
+        }
+
+        public Criteria andHrTelephoneGreaterThan(String value) {
+            addCriterion("hr_telephone >", value, "hrTelephone");
+            return (Criteria) this;
+        }
+
+        public Criteria andHrTelephoneGreaterThanOrEqualTo(String value) {
+            addCriterion("hr_telephone >=", value, "hrTelephone");
+            return (Criteria) this;
+        }
+
+        public Criteria andHrTelephoneLessThan(String value) {
+            addCriterion("hr_telephone <", value, "hrTelephone");
+            return (Criteria) this;
+        }
+
+        public Criteria andHrTelephoneLessThanOrEqualTo(String value) {
+            addCriterion("hr_telephone <=", value, "hrTelephone");
+            return (Criteria) this;
+        }
+
+        public Criteria andHrTelephoneLike(String value) {
+            addCriterion("hr_telephone like", value, "hrTelephone");
+            return (Criteria) this;
+        }
+
+        public Criteria andHrTelephoneNotLike(String value) {
+            addCriterion("hr_telephone not like", value, "hrTelephone");
+            return (Criteria) this;
+        }
+
+        public Criteria andHrTelephoneIn(List<String> values) {
+            addCriterion("hr_telephone in", values, "hrTelephone");
+            return (Criteria) this;
+        }
+
+        public Criteria andHrTelephoneNotIn(List<String> values) {
+            addCriterion("hr_telephone not in", values, "hrTelephone");
+            return (Criteria) this;
+        }
+
+        public Criteria andHrTelephoneBetween(String value1, String value2) {
+            addCriterion("hr_telephone between", value1, value2, "hrTelephone");
+            return (Criteria) this;
+        }
+
+        public Criteria andHrTelephoneNotBetween(String value1, String value2) {
+            addCriterion("hr_telephone not between", value1, value2, "hrTelephone");
             return (Criteria) this;
         }
 

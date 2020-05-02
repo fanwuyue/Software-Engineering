@@ -1,13 +1,13 @@
 package top.womoe.service;
 
 import org.springframework.stereotype.Service;
-import top.womoe.model.HR;
+import top.womoe.model.Hr;
 
 @Service
-public interface HRService {
-    HR getHR(String username);
+public interface HrService {
+    Hr getHr(String username);
     boolean verifyPassword(String username, String password);
     boolean verifyLogin(String username, String token);
-    boolean updateHR(HR hr);
+    boolean updateHr(Hr hr);
     boolean updateToken(String username, String Token);
 }
