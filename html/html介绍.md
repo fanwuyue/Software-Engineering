@@ -144,6 +144,35 @@ div|content|存放你编辑好的表格代码
 --|:--:|--:
 按钮|empty|清空按钮
 
+#### &nbsp;&nbsp;8)列出所有工程师
+控件类型|控件id|控件使用说明
+--|:--:|--:
+div|content|放入表格
+
+```
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>编号</th>
+      <th>姓名</th>
+      <th>性别</th>
+      <th>出生日期</th>
+      <th>学历</th>
+      <th>贯籍</th>
+      <th>地址</th>
+      <th>电话</th>
+      <th>工龄</th>
+      <th>基本工资</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      ···
+    </tr>
+  </tbody>
+</table>
+```
+
 #### &nbsp;&nbsp;8)计算工资公式(公式看总开发文档)
 控件类型|控件id|控件使用说明
 --|:--:|--:
@@ -219,3 +248,27 @@ select|type|类型
 select|woeking_year|工龄
 按钮|search|搜索信息
 按钮|submit|保存修改信息
+
+#### &nbsp;nbsp;7)列出所有认识用户
+控件类型|控件id|控件使用说明
+--|:--:|--:
+div|content|放入表格
+
+```
+<table class="table table-hover">
+  	<thead>
+  		<tr>
+  			<th>编号</th>
+  			<th>姓名</th>
+  			<th>性别</th>
+        <th>电话</th>
+        <th>工龄</th>
+  		</tr>
+  	</thead>
+  	<tbody>
+  		<tr>
+  			···
+  		</tr>
+  	</tbody>
+  </table>
+```
