@@ -73,4 +73,102 @@ public class AdminController {
         return res;
 
     }
+
+    @RequestMapping(path="/deleteHr", method = RequestMethod.GET)
+    public Object addHr(@CookieValue("username") String username, @CookieValue("token") String token,
+                        @RequestParam("type") Integer type, @RequestParam("key") String key){
+        Map<Object, Object> res = new HashMap<>();
+        res.put("status", "failed");
+        if(!adminService.verifyLogin(username, token)){
+            res.put("reason", "notLogged");
+            return res;
+        }
+        if(adminService.deleteHr(type, key) == 1)
+            res.put("status", "success");
+        else if (adminService.deleteHr(type, key) == 2)
+            res.put("reason", "deleteError");
+        else
+            res.put("reason", "noSuchHr");
+        return res;
+
+    }
+
+    @RequestMapping(path="/getHr", method = RequestMethod.GET)
+    public Object getHr(@CookieValue("username") String username, @CookieValue("token") String token,
+                        @RequestParam("type") Integer type, @RequestParam("key") String key){
+        Map<Object, Object> res = new HashMap<>();
+        res.put("status", "failed");
+        if(!adminService.verifyLogin(username, token)){
+            res.put("reason", "notLogged");
+            return res;
+        }
+        Hr hr = adminService.getHr(type, key);
+        if(hr != null)
+        {
+            res.put("status", "success");
+            res.put("hr", hr);
+        }
+        else
+            res.put("reason", "noSuchHr");
+        return res;
+    }
+
+    @RequestMapping(path="/getHrs", method = RequestMethod.GET)
+    public Object getHrs(@CookieValue("username") String username, @CookieValue("token") String token){
+        Map<Object, Object> res = new HashMap<>();
+        res.put("status", "failed");
+        if(!adminService.verifyLogin(username, token)){
+            res.put("reason", "notLogged");
+            return res;
+        }
+        res.put("hrs", adminService.getHrs());
+        res.put("status", "success");
+        return res;
+    }
+
+    @RequestMapping(path="/deleteAll", method = RequestMethod.GET)
+    public Object deleteAll(@CookieValue("username") String username, @CookieValue("token") String token){
+        Map<Object, Object> res = new HashMap<>();
+        res.put("status", "failed");
+        if(!adminService.verifyLogin(username, token)){
+            res.put("reason", "notLogged");
+            return res;
+        }
+        if(adminService.deleteAll())
+            res.put("status", "success");
+        return res;
+    }
+
+    @RequestMapping(path="/updateHr", method = RequestMethod.POST)
+    public Object updateHr(@CookieValue("username") String username, @CookieValue("token") String token, @RequestBody String body){
+        Map<Object, Object> res = new HashMap<>();
+        res.put("status", "failed");
+        JSONObject jsonObject;
+        try {
+            jsonObject = JSON.parseObject(body);
+        } catch (JSONException je){
+            res.put("reason", "errorBody");
+            return res;
+        }
+        if(!adminService.verifyLogin(username, token)){
+            res.put("reason", "notLogged");
+            return res;
+        }
+        Hr hr = new Hr();
+        hr.setId(jsonObject.getIntValue("uid"));
+        hr.setHrName(jsonObject.getString("name"));
+        hr.setHrNumber(jsonObject.getString("number"));
+        hr.setHrPassword(jsonObject.getString("password"));
+        hr.setHrSeniority(jsonObject.getInteger("seniority"));
+        hr.setHrSex(jsonObject.getString("sex"));
+        hr.setHrUsername(jsonObject.getString("username"));
+        hr.setHrTelephone(jsonObject.getString("telephone"));
+        if(adminService.updateHr(hr) == 1)
+            res.put("status", "success");
+        else if(adminService.updateHr(hr) == 2)
+            res.put("reason", "updateError");
+        else
+            res.put("reason", "numberAlreadyExists");
+        return res;
+    }
 }

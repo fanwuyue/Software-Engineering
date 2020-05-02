@@ -9,6 +9,7 @@ import top.womoe.mapper.HrMapper;
 import top.womoe.model.Admin;
 import top.womoe.model.AdminExample;
 import top.womoe.model.Hr;
+import top.womoe.model.HrExample;
 import top.womoe.service.AdminService;
 
 import java.util.List;
@@ -57,6 +58,60 @@ public class AdminServiceImpl implements AdminService {
     }
 
     public boolean addHr(Hr hr) {
-        return hrMapper.insert(hr) > 0;
+        if(getHr(0, hr.getHrNumber()) == null)
+            return hrMapper.insert(hr) > 0;
+        return false;
+    }
+
+    // 1 成功 2 失败 3 无此用户
+    public int deleteHr(int type, String key) {
+        Hr hr = getHr(type, key);
+        if(hr != null){
+            return hrMapper.deleteByPrimaryKey(hr.getId()) > 0? 1:2;
+        }
+        return 3;
+    }
+
+    // 1 成功 2 失败 3 存在此编号
+    public int updateHr(Hr hr) {
+        Hr newHr = getHr(0, hr.getHrNumber());
+        if(newHr == null){
+            return hrMapper.updateByPrimaryKey(hr) > 0 ? 1:2;
+        }
+        if(newHr.getId().equals(hr.getId())) {
+            return hrMapper.updateByPrimaryKey(hr) > 0 ? 1:2;
+        }
+        return 3;
+    }
+
+    public List<Hr> getHrs() {
+        List<Hr> hrs = hrMapper.selectByExample(new HrExample());
+        for (Hr hr : hrs) {
+            hr.setHrToken("");
+        }
+        return hrs;
+    }
+
+    public boolean deleteAll() {
+        return hrMapper.deleteByExample(new HrExample()) >= 0;
+    }
+
+    public Hr getHr(int type, String key) {
+        HrExample hrExample = new HrExample();
+        if(type == 0){
+            hrExample.createCriteria().andHrNumberEqualTo(key);
+        }
+        else if(type == 1){
+            hrExample.createCriteria().andHrNameEqualTo(key);
+        } else {
+            return null;
+        }
+        List<Hr> hrs = hrMapper.selectByExample(hrExample);
+        if(hrs.size() == 1){
+            Hr hr = hrs.get(0);
+            hr.setHrToken("");
+            return hr;
+        }
+        return null;
     }
 }
