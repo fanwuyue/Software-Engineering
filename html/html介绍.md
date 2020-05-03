@@ -197,6 +197,8 @@ div|content|放入表格
 --|:--:|--:
 文本框|id|编号
 文本框|name|姓名
+文本框|username|用户名
+文本框|password|密码
 文本框|phone|电话
 select|woeking_year|工龄
 按钮|submit|提交信息
@@ -244,12 +246,14 @@ select|type|类型
 文本框|keyword|关键字
 文本框|id|编号
 文本框|name|姓名
+文本框|username|用户名
+文本框|password|密码
 文本框|phone|电话
 select|woeking_year|工龄
 按钮|search|搜索信息
 按钮|submit|保存修改信息
 
-#### &nbsp;nbsp;7)列出所有认识用户
+#### &nbsp;nbsp;7)列出所有用户
 控件类型|控件id|控件使用说明
 --|:--:|--:
 div|content|放入表格
@@ -260,6 +264,8 @@ div|content|放入表格
   		<tr>
   			<th>编号</th>
   			<th>姓名</th>
+        <th>用户名</th>
+        <th>密码</th>
   			<th>性别</th>
         <th>电话</th>
         <th>工龄</th>
