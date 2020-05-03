@@ -10,28 +10,35 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <!-- 导入图片背景 -->
   <link rel="stylesheet" href="../static/css/style.css">
-  <title>清空所有用户用户</title>
+  <title>查看指定用户所有操作</title>
 </head>
-<body>
+<body style="overflow-y: auto;">
   <!-- 导航栏 -->
   <nav class="navbar navbar-default" role="navigation">
     <div class="container-fluid">
       <div class="navbar-header">
-          <a class="navbar-brand" href="#">清空用户</a>
+          <a class="navbar-brand" href="#">查看用户所有操作</a>
       </div>
-      <div>
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="./index.html">返回首页</a></li>
-            <li><a href="#"><i class="glyphicon glyphicon-log-in"></i>登出系统</a></li>
+
+      <div class="navbar-right">
+            <button type="button" class="btn btn-info" style="margin-top: 10%" id="quit">退出系统</button>
+          </div>
+        <div class="nav navbar-nav navbar-right">
+          <ul class="nav navbar-nav">
+            <li><a href="./index.html">返回主页</a></li>
           </ul>
+        </div>
+
       </div>
     </div>
-  </nav>
+</nav>
 
-  <div >
-    <button type="button" class="btn btn-success" style="margin-left: 45%; margin-right: 45% " id="empty">清空所有用户</button>
-  </div>
+<!-- 表格 -->
+<div id="content" style="margin-left: 5%; margin-right:5%; background-color: rgb(255, 255, 255);">
+
+</div>
 
 </body>
 </html>
