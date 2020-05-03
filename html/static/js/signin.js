@@ -18,10 +18,11 @@ if($.cookie("username")!=null&&$.cookie("token")!=null){
   })
 }
 
-  $("button").click(function(event) {
+  $("#login").click(function(event) {
     /* Act on the event */
-     var name=$("input[name='username']").val();
-     var pwd=$("input[name='password']").val()
+     var name=$("#username").val();
+     var pwd=$("#password").val();
+
     if(name==""||pwd==""){
       alert("用户名和密码不得为空");
     }else{
