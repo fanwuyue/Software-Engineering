@@ -58,6 +58,10 @@ public class AdminServiceImpl implements AdminService {
     }
 
     public boolean addHr(Hr hr) {
+        HrExample hrExample = new HrExample();
+        hrExample.createCriteria().andHrUsernameEqualTo(hr.getHrUsername());
+        if(hrMapper.selectByExample(hrExample).size() != 0)
+            return false;
         if(getHr(0, hr.getHrNumber()) == null)
             return hrMapper.insert(hr) > 0;
         return false;
