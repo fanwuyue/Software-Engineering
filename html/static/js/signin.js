@@ -1,3 +1,7 @@
+window.username;
+window.token;
+
+
 $(document).ready(function() {
   var link='http://sw.womoe.top';
 
@@ -31,11 +35,13 @@ $(document).ready(function() {
 
     $.ajax({
       url: link+'/admin/login?username='+name+'&password='+pwd,
-      type: 'GET'
+      type: 'GET',
+      xhrFields: {
+        withCredentials: true
+    }
     })
     .done(function(data) {
        if(data.status=='success'){
-         alert("登陆成功");
          var t=data.token;
          $.cookie('username', name, {
            domain: 'sw.womoe.top'
@@ -43,8 +49,10 @@ $(document).ready(function() {
            $.cookie('token', t, {
              domain: 'sw.womoe.top'
            });
+           window.username=name;
+           window.token=data.token;
       //  alert(document.cookie);
-        window.location.href="/html/administrator/index.html";
+        window.location.href="./administrator/index.html";
        }else{
          alert("账号或密码有误");
        }
