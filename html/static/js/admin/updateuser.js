@@ -1,4 +1,7 @@
 $(document).ready(function() {
+  $("#quit").click(function(){
+    window.location.href="../home.html";
+  });
 var link='http://sw.womoe.top';
 var uid;
 $("#search").click(function(event) {

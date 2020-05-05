@@ -1,7 +1,3 @@
-window.username;
-window.token;
-
-
 $(document).ready(function() {
   var link='http://sw.womoe.top';
 
@@ -89,7 +85,7 @@ $(document).ready(function() {
              domain: 'sw.womoe.top'
            });
         //alert(document.cookie);
-        window.location.href="/html/user/index.html";
+        window.location.href="./user/index.html";
        }else{
          alert("账号或密码有误");
        }

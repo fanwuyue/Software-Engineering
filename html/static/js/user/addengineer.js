@@ -6,37 +6,54 @@ $("#quit").click(function(){
 $("#submit").click(function(event) {
   var id=$("#id").val();
   var name=$("#name").val();
-  var username=$("#username").val();
-  var password=$("#password").val();
   var sex;
   var obj=document.getElementsByName("sex");
   for (var i=0;i<obj.length;i++){ //遍历Radio
     if(obj[i].checked){
        sex=obj[i].value;
-       if(sex=='1'){
+       if(sex=='0'){
          sex='女';
        }else{
          sex='男';
        }
     }
   }
+  function buquan(num,length){
+    var numstr = num.toString();
+    var l=numstr.length;
+    if (numstr.length>=length) {return numstr;}
+
+    for(var  i = 0 ;i<length - l;i++){
+      numstr = "0" + numstr;
+     }
+    return numstr;
+   }
+  var year=$('#year option:selected').val();
+  var month=$('#month option:selected').val();
+  var day=$('#day option:selected').val();
+  var education=$('#education option:selected').val();
+  var domicile=$("#domicile").val();
+  var address=$("#address").val();
   var phone=$("#phone").val();
   var wyear=$("#working_year").val();
-  if(id==null||name==null||username==null||password==null||sex==null||phone==null||wyear==null){
-    alert("信息不得为空");
-  }
+  var salary=$("#salary").val();
+  console.log(education);
 //alert(name);
   var a = {};
   a.name = name;
   a.telephone = phone;
-  a.username = username;
-  a.password = password;
   a.sex = sex;
-  a.seniority = wyear;
+  a.seniority =parseInt(wyear);
   a.number = id;
-
+  a.address=address;
+  a.birthDate=buquan(year,2)+'-'+buquan(month,2)+'-'+buquan(day,2);
+  a.baseSalary=parseInt(salary);
+  a.hometown=domicile;
+  a.edu=parseInt(education);
+  //console.log(sex);
+  console.log(a);
   $.ajax({
-    url: 'http://sw.womoe.top'+'/admin/addHr',
+    url: 'http://sw.womoe.top'+'/hr/addWorker',
     type: 'POST',
     dataType: "json",
     contentType: "application/json",
