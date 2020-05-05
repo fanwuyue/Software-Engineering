@@ -34,7 +34,7 @@ public class AdminController {
     }
 
     @RequestMapping("/verifyLogin")
-    public Object verifyLogin(@CookieValue("username") String username, @CookieValue("token") String token){
+    public Object verifyLogin( @CookieValue(name = "username", required = false) String username, @CookieValue(name = "token", required = false) String token){
         Map<Object, Object> res = new HashMap<>();
         res.put("status", "failed");
         if(adminService.verifyLogin(username, token)){
@@ -44,7 +44,7 @@ public class AdminController {
     }
 
     @RequestMapping(path="/addHr", method = RequestMethod.POST)
-    public Object addHr(/* @CookieValue("username") String username, @CookieValue("token") String token, */@RequestBody String body){
+    public Object addHr( @CookieValue(name = "username", required = false) String username, @CookieValue(name = "token", required = false) String token, @RequestBody String body){
         Map<Object, Object> res = new HashMap<>();
         res.put("status", "failed");
         JSONObject jsonObject;
@@ -55,12 +55,10 @@ public class AdminController {
             res.put("reason", "errorBody");
             return res;
         }
-        /*
-        if(!adminService.verifyLogin(username, token)){
+        /*if(!adminService.verifyLogin(username, token)){
             res.put("reason", "notLogged");
             return res;
-        }
-        */
+        }*/
         Hr hr = new Hr();
         hr.setHrName(jsonObject.getString("name"));
         hr.setHrNumber(jsonObject.getString("number"));
@@ -77,7 +75,7 @@ public class AdminController {
     }
 
     @RequestMapping(path="/deleteHr", method = RequestMethod.GET)
-    public Object addHr(/* @CookieValue("username") String username, @CookieValue("token") String token, */
+    public Object deleteHr( @CookieValue(name = "username", required = false) String username, @CookieValue(name = "token", required = false) String token,
                         @RequestParam("type") Integer type, @RequestParam("key") String key){
         Map<Object, Object> res = new HashMap<>();
         res.put("status", "failed");
@@ -98,7 +96,7 @@ public class AdminController {
     }
 
     @RequestMapping(path="/getHr", method = RequestMethod.GET)
-    public Object getHr(/* @CookieValue("username") String username, @CookieValue("token") String token, */
+    public Object getHr( @CookieValue(name = "username", required = false) String username, @CookieValue(name = "token", required = false) String token,
                         @RequestParam("type") Integer type, @RequestParam("key") String key){
         Map<Object, Object> res = new HashMap<>();
         res.put("status", "failed");
@@ -120,7 +118,7 @@ public class AdminController {
     }
 
     @RequestMapping(path="/getHrs", method = RequestMethod.GET)
-    public Object getHrs(/* @CookieValue("username") String username, @CookieValue("token") String token, */){
+    public Object getHrs( @CookieValue(name = "username", required = false) String username, @CookieValue(name = "token", required = false) String token){
         Map<Object, Object> res = new HashMap<>();
         res.put("status", "failed");
         /*
@@ -135,7 +133,7 @@ public class AdminController {
     }
 
     @RequestMapping(path="/deleteAll", method = RequestMethod.GET)
-    public Object deleteAll(/* @CookieValue("username") String username, @CookieValue("token") String token, */){
+    public Object deleteAll( @CookieValue(name = "username", required = false) String username, @CookieValue(name = "token", required = false) String token){
         Map<Object, Object> res = new HashMap<>();
         res.put("status", "failed");
         /*
@@ -150,7 +148,7 @@ public class AdminController {
     }
 
     @RequestMapping(path="/updateHr", method = RequestMethod.POST)
-    public Object updateHr(/* @CookieValue("username") String username, @CookieValue("token") String token, */@RequestBody String body){
+    public Object updateHr( @CookieValue(name = "username", required = false) String username, @CookieValue(name = "token", required = false) String token, @RequestBody String body){
         Map<Object, Object> res = new HashMap<>();
         res.put("status", "failed");
         JSONObject jsonObject;
@@ -183,4 +181,19 @@ public class AdminController {
             res.put("reason", "numberAlreadyExists");
         return res;
     }
+
+    @RequestMapping(path="/getLogs", method = RequestMethod.GET)
+    public Object getLogs( @CookieValue(name = "username", required = false) String username, @CookieValue(name = "token", required = false) String token){
+        Map<Object, Object> res = new HashMap<>();
+        res.put("status", "failed");
+        /*
+        if(!adminService.verifyLogin(username, token)){
+            res.put("reason", "notLogged");
+            return res;
+        }
+        */
+        res.put("logs", adminService.getLogs());
+        return res;
+    }
+
 }

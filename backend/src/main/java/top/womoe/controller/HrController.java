@@ -6,10 +6,14 @@ import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import top.womoe.model.Hr;
+import top.womoe.model.Log;
 import top.womoe.model.Worker;
 import top.womoe.service.HrService;
 import top.womoe.utils.Utils;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,6 +22,9 @@ import java.util.Map;
 @RestController
 @RequestMapping("hr")
 public class HrController {
+
+    boolean ifLog = true;
+    DateFormat df=new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
     @Autowired
     HrService hrService = null;
@@ -30,6 +37,7 @@ public class HrController {
             String Token = Utils.getRandomString(17);
             if(hrService.updateToken(username, Token)){
                 res.put("status", "success");
+
                 res.put("token", Token);
             }
         }
@@ -37,7 +45,7 @@ public class HrController {
     }
 
     @RequestMapping("/verifyLogin")
-    public Object verifyLogin(/*@CookieValue("username") String username, @CookieValue("token") String token*/){
+    public Object verifyLogin( @CookieValue(name = "username", required = false) String username, @CookieValue(name = "token", required = false) String token){
         Map<Object, Object> res = new HashMap<>();
         res.put("status", "failed");
 /*        if(hrService.verifyLogin(username, token)){
@@ -47,7 +55,7 @@ public class HrController {
     }
 
     @RequestMapping(path="/addWorker", method = RequestMethod.POST)
-    public Object addWorker(/* @CookieValue("username") String username, @CookieValue("token") String token, */@RequestBody String body){
+    public Object addWorker( @CookieValue(name = "username", required = false) String username, @CookieValue(name = "token", required = false) String token, @RequestBody String body){
         Map<Object, Object> res = new HashMap<>();
         res.put("status", "failed");
         JSONObject jsonObject;
@@ -75,15 +83,20 @@ public class HrController {
         worker.setWksSex(jsonObject.getString("sex"));
         worker.setWksTelephone(jsonObject.getString("telephone"));
         worker.setWksEdu(jsonObject.getInteger("edu"));
-        if(hrService.addWorker(worker))
+        if(hrService.addWorker(worker)) {
+            Log log = new Log();
+            log.setHrId(hrService.getHr(username).getId());
+            log.setMessage("时间: " + df.format( new Date()) + "   事件：添加工程师信息 信息如下: " + worker.toString());
+            hrService.addLog(log);
             res.put("status", "success");
+        }
         else
             res.put("reason", "insertError");
         return res;
     }
 
     @RequestMapping(path="/deleteWorker", method = RequestMethod.GET)
-    public Object addWorker(/* @CookieValue("username") String username, @CookieValue("token") String token, */
+    public Object addWorker( @CookieValue(name = "username", required = false) String username, @CookieValue(name = "token", required = false) String token,
             @RequestParam("type") Integer type, @RequestParam("key") String key){
         Map<Object, Object> res = new HashMap<>();
         res.put("status", "failed");
@@ -93,8 +106,13 @@ public class HrController {
             return res;
         }
         */
-        if(hrService.deleteWorker(type, key) == 1)
+        if(hrService.deleteWorker(type, key) == 1) {
             res.put("status", "success");
+            Log log = new Log();
+            log.setHrId(hrService.getHr(username).getId());
+            log.setMessage("时间: " + df.format( new Date()) + "   事件：删除工程师信息 信息如下: 删除方式: " + (type == 0 ? "编号": "姓名") + "  关键字：" + key);
+            hrService.addLog(log);
+        }
         else if (hrService.deleteWorker(type, key) == 2)
             res.put("reason", "deleteError");
         else
@@ -104,7 +122,7 @@ public class HrController {
     }
 
     @RequestMapping(path="/getWorker", method = RequestMethod.GET)
-    public Object getWorker(/* @CookieValue("username") String username, @CookieValue("token") String token, */
+    public Object getWorker( @CookieValue(name = "username", required = false) String username, @CookieValue(name = "token", required = false) String token,
             @RequestParam("type") Integer type, @RequestParam("key") String key){
         Map<Object, Object> res = new HashMap<>();
         res.put("status", "failed");
@@ -126,7 +144,7 @@ public class HrController {
     }
 
     @RequestMapping(path="/getWorkers", method = RequestMethod.GET)
-    public Object getWorkers(/* @CookieValue("username") String username, @CookieValue("token") String token, */){
+    public Object getWorkers( @CookieValue(name = "username", required = false) String username, @CookieValue(name = "token", required = false) String token){
         Map<Object, Object> res = new HashMap<>();
         res.put("status", "failed");
         /*
@@ -141,7 +159,7 @@ public class HrController {
     }
 
     @RequestMapping(path="/deleteAll", method = RequestMethod.GET)
-    public Object deleteAll(/* @CookieValue("username") String username, @CookieValue("token") String token, */){
+    public Object deleteAll( @CookieValue(name = "username", required = false) String username, @CookieValue(name = "token", required = false) String token){
         Map<Object, Object> res = new HashMap<>();
         res.put("status", "failed");
         /*
@@ -150,13 +168,21 @@ public class HrController {
             return res;
         }
         */
-        if(hrService.deleteAll())
+        if(hrService.deleteAll()) {
+            if(ifLog) {
+                Log log = new Log();
+                log.setHrId(hrService.getHr(username).getId());
+                log.setMessage("时间: " + df.format( new Date() ) + "   事件：删除所有工程师信息");
+                hrService.addLog(log);
+            }
             res.put("status", "success");
+        }
         return res;
     }
 
     @RequestMapping(path="/updateWorker", method = RequestMethod.POST)
-    public Object updateWorker(/* @CookieValue("username") String username, @CookieValue("token") String token, */@RequestBody String body){
+    public Object updateWorker( @CookieValue(name = "username", required = false) String username, @CookieValue(name = "token", required = false) String token,
+                                @RequestBody String body){
         Map<Object, Object> res = new HashMap<>();
         res.put("status", "failed");
         JSONObject jsonObject;
@@ -172,6 +198,8 @@ public class HrController {
             return res;
         }
         */
+
+        Worker oldWorker = hrService.getWorker(jsonObject.getInteger("uid"));
         Worker worker = new Worker();
         worker.setWksName(jsonObject.getString("name"));
         worker.setWksAddress(jsonObject.getString("address"));
@@ -184,9 +212,15 @@ public class HrController {
         worker.setWksSex(jsonObject.getString("sex"));
         worker.setWksTelephone(jsonObject.getString("telephone"));
         worker.setWksEdu(jsonObject.getInteger("edu"));
-        System.out.println(worker);
-        if(hrService.updateWorker(worker) == 1)
+        if(hrService.updateWorker(worker) == 1) {
+            if(ifLog) {
+                Log log = new Log();
+                log.setHrId(hrService.getHr(username).getId());
+                log.setMessage("时间: " + df.format( new Date()) + "   事件：更新工程师信息 原信息如下:" + oldWorker.toString() + "  更新后信息如下: " + worker.toString());
+                hrService.addLog(log);
+            }
             res.put("status", "success");
+        }
         else if(hrService.updateWorker(worker) == 2)
             res.put("reason", "updateError");
         else

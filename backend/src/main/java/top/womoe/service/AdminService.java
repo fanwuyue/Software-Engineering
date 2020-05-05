@@ -3,6 +3,7 @@ package top.womoe.service;
 import org.springframework.stereotype.Service;
 import top.womoe.model.Admin;
 import top.womoe.model.Hr;
+import top.womoe.model.NewLog;
 
 import java.util.List;
 
@@ -18,4 +19,5 @@ public interface AdminService {
     List<Hr> getHrs();
     boolean deleteAll();
     Hr getHr(int type, String key);
+    List<NewLog> getLogs();
 }

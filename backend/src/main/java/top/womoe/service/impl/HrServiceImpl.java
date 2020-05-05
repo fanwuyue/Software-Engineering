@@ -3,11 +3,9 @@ package top.womoe.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import top.womoe.mapper.HrMapper;
+import top.womoe.mapper.LogMapper;
 import top.womoe.mapper.WorkerMapper;
-import top.womoe.model.Hr;
-import top.womoe.model.HrExample;
-import top.womoe.model.Worker;
-import top.womoe.model.WorkerExample;
+import top.womoe.model.*;
 import top.womoe.service.HrService;
 
 import java.util.List;
@@ -19,6 +17,8 @@ public class HrServiceImpl implements HrService {
     private HrMapper hrMapper;
     @Autowired
     private WorkerMapper workerMapper;
+    @Autowired
+    private LogMapper logMapper;
 
     public Hr getHr(String username) {
         HrExample hrExample = new HrExample();
@@ -96,5 +96,15 @@ public class HrServiceImpl implements HrService {
             return null;
         }
         return workerMapper.selectByExample(workerExample);
+    }
+
+    @Override
+    public Worker getWorker(int id) {
+        return workerMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public boolean addLog(Log log) {
+        return logMapper.insert(log) > 0;
     }
 }

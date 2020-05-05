@@ -1,5 +1,7 @@
 package top.womoe.model;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Worker {
@@ -24,6 +26,26 @@ public class Worker {
     private Integer wksBasesalary;
 
     private String wksSex;
+
+    public String toString(){
+        String xl = "";
+        switch (wksEdu){
+            case 0: xl = "高中";
+                break;
+            case 1: xl = "学士";
+                break;
+            case 2: xl = "硕士";
+                break;
+            case 3: xl = "博士";
+                break;
+            case 4: xl = "其它";
+                break;
+
+        }
+        DateFormat df=new SimpleDateFormat("yyyy-MM-dd");
+        return String.format("姓名: %s， 编号: %s， 性别: %s， 生日: %s， 学历: %s， 籍贯: %s， 地址: %s， 电话: %s， 工龄: %s， 基本薪水: %s"
+                , wksName, wksNumber, wksSex, df.format(wksBirthdate), xl, wksHometown, wksAddress, wksTelephone, wksSeniority, wksBasesalary);
+    }
 
     public Integer getId() {
         return id;

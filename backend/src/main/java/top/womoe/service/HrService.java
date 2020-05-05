@@ -2,6 +2,7 @@ package top.womoe.service;
 
 import org.springframework.stereotype.Service;
 import top.womoe.model.Hr;
+import top.womoe.model.Log;
 import top.womoe.model.Worker;
 
 import java.util.List;
@@ -18,4 +19,6 @@ public interface HrService {
     List<Worker> getWorkers();
     boolean deleteAll();
     List<Worker> getWorker(int type, String key);
+    Worker getWorker(int id);
+    boolean addLog(Log log);
 }

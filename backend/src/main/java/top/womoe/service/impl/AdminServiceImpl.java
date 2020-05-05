@@ -6,12 +6,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.util.NestedServletException;
 import top.womoe.mapper.AdminMapper;
 import top.womoe.mapper.HrMapper;
-import top.womoe.model.Admin;
-import top.womoe.model.AdminExample;
-import top.womoe.model.Hr;
-import top.womoe.model.HrExample;
+import top.womoe.mapper.LogMapper;
+import top.womoe.model.*;
 import top.womoe.service.AdminService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -22,6 +21,9 @@ public class AdminServiceImpl implements AdminService {
 
     @Autowired
     private HrMapper hrMapper;
+
+    @Autowired
+    private LogMapper logMapper;
 
     public Admin getAdmin(String username) {
         AdminExample adminExample = new AdminExample();
@@ -117,5 +119,21 @@ public class AdminServiceImpl implements AdminService {
             return hr;
         }
         return null;
+    }
+
+    @Override
+    public List<NewLog> getLogs() {
+        List<Log> logList = logMapper.selectByExampleWithBLOBs(new LogExample());
+        List<NewLog> newLogList = new ArrayList<>();
+        for (Log log : logList){
+            NewLog newLog = new NewLog();
+            Hr hr = hrMapper.selectByPrimaryKey(log.getHrId());
+            newLog.setHrName(hr.getHrName());
+            newLog.setHrNumber(hr.getHrNumber());
+            newLog.setId(log.getId());
+            newLog.setMessage(log.getMessage());
+            newLogList.add(newLog);
+        }
+        return newLogList;
     }
 }
