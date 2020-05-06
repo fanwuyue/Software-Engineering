@@ -7,10 +7,10 @@ var link='http://sw.womoe.top';
 var uid;
 $("#delete").click(function(event) {
   var s=$("#type").find("option:selected").val();
-  var key=$("#keyword").val().toString();
+  var key=$("#keyword").val();
 
     $.ajax({
-      url: link+'/admin/deleteHr?type='+s+'&key='+key,
+      url: link+'/hr/deleteWorker?type='+s+'&key='+key,
       type: 'GET',
     })
     .done(function(data) {
@@ -23,7 +23,7 @@ $("#delete").click(function(event) {
         if(data.reason=='deleteError'){
             alert('删除失败');
         }
-        if(data.reason=='noSuchHr'){
+        if(data.reason=='noSuchWorker'){
           alert('没有此用户');
         }
         if(data.reason=='notLogged'){

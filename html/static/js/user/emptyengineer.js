@@ -1,16 +1,10 @@
 $(document).ready(function() {
 
-  $("#quit").click(function(){
-    window.location.href="../home.html";
-  });
 var link='http://sw.womoe.top';
-var uid;
-$("#delete").click(function(event) {
-  var s=$("#type").find("option:selected").val();
-  var key=$("#keyword").val().toString();
-
+$("#empty").click(function(event) {
+  alert('1');
     $.ajax({
-      url: link+'/admin/deleteHr?type='+s+'&key='+key,
+      url: link+'/hr/deleteAlll',
       type: 'GET',
     })
     .done(function(data) {
@@ -22,9 +16,6 @@ $("#delete").click(function(event) {
         console.log(data.reason);
         if(data.reason=='deleteError'){
             alert('删除失败');
-        }
-        if(data.reason=='noSuchHr'){
-          alert('没有此用户');
         }
         if(data.reason=='notLogged'){
           alert('没有登陆或cookie失效');
@@ -39,4 +30,10 @@ $("#delete").click(function(event) {
     });
 
 });
+
+$("#quit").click(function(){
+  window.location.href="../home.html";
+});
+
+
 });
