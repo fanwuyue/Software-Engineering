@@ -4,6 +4,41 @@ $(document).ready(function() {
   });
 var link='http://sw.womoe.top';
 
+function getMyDate(str) {
+    var oDate = new Date(str),
+    oYear = oDate.getFullYear(),
+    oMonth = oDate.getMonth()+1,
+    oDay = oDate.getDate(),
+  
+    oTime = oYear +'-'+ addZero(oMonth) +'-'+ addZero(oDay) ;
+    return oTime;
+}
+
+function addZero(num){
+    if(parseInt(num) < 10){
+        num = '0'+num;
+    }
+    return num;
+}
+
+function getedu(str){
+  if(str=='0'){
+    return '高中';
+  }
+  if(str=='1'){
+    return '学士';
+  }
+  if(str=='2'){
+    return '硕士';
+  }
+  if(str=='3'){
+    return '博士';
+  }
+  if(str=='4'){
+    return '其它';
+  }
+}
+
 
     $.ajax({
       url: link+'/hr/getWorkers',
@@ -31,9 +66,9 @@ var link='http://sw.womoe.top';
              te=ta.insertCell(2);
              te.innerHTML=t.wksSex;
              te=ta.insertCell(3);
-             te.innerHTML=t.wksBirthDate;
+             te.innerHTML=getMyDate(t.wksBirthdate);
              te=ta.insertCell(4);
-             te.innerHTML=t.wksEdu;
+             te.innerHTML=getedu(t.wksEdu);
              te=ta.insertCell(5);
              te.innerHTML=t.wksHometown;
              te=ta.insertCell(6);
