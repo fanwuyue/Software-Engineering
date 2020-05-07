@@ -5,15 +5,6 @@ $(document).ready(function() {
 var link='http://sw.womoe.top';
 
 
-  var tb = document.getElementById('table');
-       var rowNum=tb.rows.length;
-       for (i=1;i<rowNum;i++)
-       {
-           tb.deleteRow(i);
-           rowNum=rowNum-1;
-           i=i-1;
-       }
-
     $.ajax({
       url: link+'/hr/getWorkers',
       type: 'GET',
@@ -72,47 +63,4 @@ var link='http://sw.womoe.top';
     .always(function() {
     //  console.log("complete");
     });
-
-  $("#sort").click(function(){
-    var oTable = document.getElementById('table');
-        var oTbody = oTable.tBodies[0];
-        console.log(oTable);
-        var type=$('#type').val();
-        //alert(type);
-        var arr = [];//用来存放每一个tr
-          var isAsc;
-        if($('#sequence').val()=='0'){
-          isAsc=true;
-        }else{
-          isAsc=false;
-        }
-        for (var i = 0; i < oTbody.rows.length; i++ ) {
-                arr[i] = oTbody.rows[i+1];
-                }
-        if(type=='1')
-            {
-                 arr.sort(function (param1, param2) {
-                   if(isAsc){
-                       return (param1.cells[type].innerHTML).localeCompare(param2.cells[type].innerHTML,"zh");}
-                    else{
-                      return (param2.cells[type].innerHTML).localeCompare(param1.cells[type].innerHTML,"zh");
-                         }
-                  }
-             );
-         }else{
-            arr.sort(function (td1, td2){
-                if(isAsc) {
-                    return parseInt(td1.cells[type].innerHTML) - parseInt(td2.cells[type].innerHTML);
-                    } else {
-                        return parseInt(td2.cells[type].innerHTML) - parseInt(td1.cells[type].innerHTML);
-                        }
-                });
-            }
-            //把排序后的tr 重新插入tbody
-        for(var j =0; j < arr.length; j++ ) {
-            oTbody.appendChild(arr[j]);
-          }
-
-});
-
 });
