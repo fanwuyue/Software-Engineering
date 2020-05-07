@@ -7,6 +7,9 @@ var uid;
   $.ajax({
       url: link+'/admin/getHrs',
       type: 'GET',
+      xhrFields: {
+  　　　　　　withCredentials: true
+  　　　　}
     })
     .done(function(data) {
       console.log(data.status);

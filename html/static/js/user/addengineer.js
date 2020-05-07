@@ -57,7 +57,10 @@ $("#submit").click(function(event) {
     type: 'POST',
     dataType: "json",
     contentType: "application/json",
-    data: JSON.stringify(a)
+    data: JSON.stringify(a),
+    xhrFields: {
+　　　　　　withCredentials: true
+　　　　}
   }).done(function(data) {
   //console.log(data);
   if(data.status=='success'){

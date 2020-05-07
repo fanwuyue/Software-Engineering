@@ -11,6 +11,9 @@ $("#search").click(function(event) {
     $.ajax({
       url: link+'/admin/getHr?type='+s+'&key='+key,
       type: 'GET',
+      xhrFields: {
+  　　　　　　withCredentials: true
+  　　　　}
     })
     .done(function(data) {
       console.log(data.status);
@@ -86,6 +89,9 @@ $("#submit").click(function(event) {
     type: 'POST',
     dataType: "json",
     contentType: "application/json",
+    xhrFields: {
+　　　　　　withCredentials: true
+　　　　},
     data: JSON.stringify(a)
   }).done(function(data) {
   //console.log(data);

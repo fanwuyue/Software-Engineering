@@ -6,6 +6,9 @@ $("#empty").click(function(event) {
     $.ajax({
       url: link+'/admin/deleteAll',
       type: 'GET',
+      xhrFields: {
+  　　　　　　withCredentials: true
+  　　　　}
     })
     .done(function(data) {
       console.log(data.status);

@@ -11,6 +11,9 @@ $("#search").click(function(event) {
     $.ajax({
       url: link+'/hr/getWorker?type='+s+'&key='+key,
       type: 'GET',
+      xhrFields: {
+  　　　　　　withCredentials: true
+  　　　　}
     })
     .done(function(data){
       if(data.status=='success'){
@@ -110,7 +113,10 @@ $("#submit").click(function(event) {
     type: 'POST',
     dataType: "json",
     contentType: "application/json",
-    data: JSON.stringify(a)
+    data: JSON.stringify(a),
+    xhrFields: {
+　　　　　　withCredentials: true
+　　　　}
   }).done(function(data) {
   //console.log(data);
   if(data.status=='success'){

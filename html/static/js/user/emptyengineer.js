@@ -2,10 +2,12 @@ $(document).ready(function() {
 
 var link='http://sw.womoe.top';
 $("#empty").click(function(event) {
-  alert('1');
     $.ajax({
       url: link+'/hr/deleteAlll',
       type: 'GET',
+      xhrFields: {
+  　　　　　　withCredentials: true
+  　　　　}
     })
     .done(function(data) {
       console.log(data.status);
