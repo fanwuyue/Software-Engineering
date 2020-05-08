@@ -23,7 +23,7 @@ import java.util.Map;
 @RequestMapping("hr")
 public class HrController {
 
-    boolean ifLog = true;
+    boolean ifLog = false;
     DateFormat df=new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
     @Autowired

@@ -73,6 +73,9 @@ public class AdminServiceImpl implements AdminService {
     public int deleteHr(int type, String key) {
         Hr hr = getHr(type, key);
         if(hr != null){
+            LogExample logExample = new LogExample();
+            logExample.createCriteria().andHrIdEqualTo(hr.getId());
+            logMapper.deleteByExample(logExample);
             return hrMapper.deleteByPrimaryKey(hr.getId()) > 0? 1:2;
         }
         return 3;
@@ -99,6 +102,7 @@ public class AdminServiceImpl implements AdminService {
     }
 
     public boolean deleteAll() {
+        logMapper.deleteByExample(new LogExample());
         return hrMapper.deleteByExample(new HrExample()) >= 0;
     }
 

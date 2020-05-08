@@ -192,6 +192,7 @@ public class AdminController {
             return res;
         }
         */
+        res.put("status", "success");
         res.put("logs", adminService.getLogs());
         return res;
     }
