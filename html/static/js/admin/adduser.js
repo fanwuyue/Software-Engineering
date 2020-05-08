@@ -24,6 +24,10 @@ $("#submit").click(function(event) {
   }
   var phone=$("#phone").val();
   var wyear=$("#working_year").val();
+  if(id.length==0||name.length==0||username.length==0||password.length==0||sex==null||phone.length==0||wyear==null){
+    alert("信息不得为空");
+    return ;
+  }
   function check(id,name,phone,username,password){
     if(id<0||id>9999||isNaN(id)||id.length!=4)
     {
@@ -51,13 +55,14 @@ $("#submit").click(function(event) {
     }
     return true;
   }
-  if(!check(id,name,phone)){
+  if(!check(id,name,phone,username,password)){
     return ;
   }
-  if(id==null||name==null||username==null||password==null||sex==null||phone==null||wyear==null){
-    alert("信息不得为空");
-    return ;
-  }
+
+  // if(id==null||name==null||username==null||password==null||sex==null||phone==null||wyear==null){
+  //   alert("信息不得为空");
+  //   return ;
+  // }
 //alert(name);
   var a = {};
   a.name = name;

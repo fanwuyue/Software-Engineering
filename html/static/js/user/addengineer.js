@@ -28,6 +28,7 @@ $("#submit").click(function(event) {
      }
     return numstr;
    }
+  console.log((sex==null));
   var year=$('#year option:selected').val();
   var month=$('#month option:selected').val();
   var day=$('#day option:selected').val();
@@ -37,6 +38,10 @@ $("#submit").click(function(event) {
   var phone=$("#phone").val();
   var wyear=$("#working_year").val();
   var salary=$("#salary").val();
+  if(id.length==0||name.length==0||sex==null||phone.length==0||wyear==null||month==null||day==null||year==null||education==null||domicile.length==0||address.length==0){
+    alert("信息不得为空");
+    return ;
+  }
   //console.log(education);
   function check(id,name,phonem,domicile,address,salary){
     if(id<0||id>9999||isNaN(id)||id.length!=4)
@@ -60,8 +65,12 @@ $("#submit").click(function(event) {
       alert('地址长度不能超过30个字符');
       return ;
     }
-    if(salary<0){
-      alert('工资不能为负数');
+    if(salary.length==0){
+      alert('工资不能为空');
+      return ;
+    }
+    if(salary<=0){
+      alert('工资不能小于等于0');
       return ;
     }
     if(!confirm('是否提交')){
