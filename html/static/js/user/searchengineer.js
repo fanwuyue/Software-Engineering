@@ -57,9 +57,9 @@ $("#search").click(function(event) {
     $.ajax({
       url: link+'/hr/getWorker?type='+s+'&key='+key,
       type: 'GET',
-      xhrFields: {
-  　　　　　　withCredentials: true
-  　　　　}
+      xhrFields:{
+        withCredentials:true
+      }
     })
     .done(function(data){
       if(data.status=='success'){

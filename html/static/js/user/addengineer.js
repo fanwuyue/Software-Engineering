@@ -92,9 +92,9 @@ $("#submit").click(function(event) {
     dataType: "json",
     contentType: "application/json",
     data: JSON.stringify(a),
-    xhrFields: {
-         withCredentials: true
-　　　　}
+    xhrFields:{
+      withCredentials:true
+    }
 }).done(function(data) {
   //console.log(data);
   if(data.status=='success'){

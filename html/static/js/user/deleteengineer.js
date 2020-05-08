@@ -20,9 +20,9 @@ $("#delete").click(function(event) {
     $.ajax({
       url: link+'/hr/deleteWorker?type='+s+'&key='+key,
       type: 'GET',
-      xhrFields: {
-  　　　　　　withCredentials: true
-  　　　　}
+      xhrFields:{
+        withCredentials:true
+      }
     })
     .done(function(data) {
       console.log(data.status);

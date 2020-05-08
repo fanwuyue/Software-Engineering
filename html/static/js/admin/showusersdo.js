@@ -7,9 +7,9 @@ var uid;
   $.ajax({
       url: link+'/admin/getLogs',
       type: 'GET',
-      xhrFields: {
-  　　　　　　withCredentials: true
-  　　　　}
+      xhrFields:{
+        withCredentials:true
+      }
     })
     .done(function(data) {
       console.log(data.status);
