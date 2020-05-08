@@ -78,7 +78,7 @@ $("#submit").click(function(event) {
     return ;
   }
 //alert(name);
-function check(id,name,phone){
+function check(id,name,phone,username,password){
   if(id<0||id>9999||isNaN(id)||id.length!=4)
   {
     alert('编号格式应为：4位数字 如0001');
@@ -88,9 +88,17 @@ function check(id,name,phone){
     alert('姓名长度不能超过20');
     return false;
   }
+  if(username.length<8||username.length>20){
+    alert('用户名长度应在8~20之间');
+    return false;
+  }
+  if(password.length<8||password.length>20){
+    alert('密码长度应在8~20之间');
+    return false;
+  }
   if(phone.length!=11||isNaN(phone)){
     alert('电话号码为11位数字');
-    return ;
+    return false;
   }
   if(!confirm('是否提交')){
     return  false;

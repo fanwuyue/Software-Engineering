@@ -1,6 +1,6 @@
 $(document).ready(function() {
   var link='http://sw.womoe.top';
-  
+
   $("#admin_login").click(function(event) {
     /* Act on the event */
     //alert(name);
@@ -14,9 +14,9 @@ $(document).ready(function() {
     $.ajax({
       url: link+'/admin/login?username='+name+'&password='+pwd,
       type: 'GET',
-      xhrFields: {
-        withCredentials: true
-    }
+      xhrFields:{
+        withCredentials:true
+      }
     })
     .done(function(data) {
        if(data.status=='success'){
