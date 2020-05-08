@@ -1,5 +1,4 @@
 $(document).ready(function() {
-
 var link='http://sw.womoe.top';
 $("#empty").click(function(event) {
   if(!confirm("是否清空所有用户")){

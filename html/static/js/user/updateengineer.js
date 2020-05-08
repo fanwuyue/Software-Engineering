@@ -143,7 +143,7 @@ if(!check(id,name,phone,domicile,address,salary)){
   //console.log(sex);
   console.log(a);
   $.ajax({
-    url: 'http://sw.womoe.top'+'/hr/updateWorker',
+    url: link+'/hr/updateWorker',
     type: 'POST',
     dataType: "json",
     contentType: "application/json",

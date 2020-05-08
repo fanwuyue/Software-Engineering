@@ -111,7 +111,7 @@ if(!check(id,name,phone)){
   a.number = id;
 
   $.ajax({
-    url: 'http://sw.womoe.top'+'/admin/updateHr',
+    url: link+'/admin/updateHr',
     type: 'POST',
     dataType: "json",
     contentType: "application/json",

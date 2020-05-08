@@ -1,24 +1,6 @@
 $(document).ready(function() {
   var link='http://sw.womoe.top';
-
-if($.cookie("username")!=null&&$.cookie("token")!=null){
-  console.log('有cookie'+document.cookie);
-  $.ajax({
-    url: link+'/admin/verifyLogin',
-    type: 'GET',
-    xhrFields: {
-　　　　　　withCredentials: true
-　　　　}
-  })
-  .done(function(status){
-    if(status=='success'){
-      alert("校验成功");
-    }else{
-      alert('校验失败');
-    }
-  });
-}
-
+  
   $("#admin_login").click(function(event) {
     /* Act on the event */
     //alert(name);

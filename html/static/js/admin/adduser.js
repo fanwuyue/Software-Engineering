@@ -61,7 +61,7 @@ $("#submit").click(function(event) {
   a.number = id;
 
   $.ajax({
-    url: 'http://sw.womoe.top'+'/admin/addHr',
+    url: link+'/admin/addHr',
     type: 'POST',
     dataType: "json",
     contentType: "application/json",

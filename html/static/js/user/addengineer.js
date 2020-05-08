@@ -87,15 +87,15 @@ $("#submit").click(function(event) {
   //console.log(sex);
   console.log(a);
   $.ajax({
-    url: 'http://sw.womoe.top'+'/hr/addWorker',
+    url: link+'/hr/addWorker',
     type: 'POST',
     dataType: "json",
     contentType: "application/json",
     data: JSON.stringify(a),
     xhrFields: {
-　　　　　　withCredentials: true
+         withCredentials: true
 　　　　}
-  }).done(function(data) {
+}).done(function(data) {
   //console.log(data);
   if(data.status=='success'){
   alert("添加成功");
