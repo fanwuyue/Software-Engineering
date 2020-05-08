@@ -48,9 +48,9 @@ public class HrController {
     public Object verifyLogin( @CookieValue(name = "username", required = false) String username, @CookieValue(name = "token", required = false) String token){
         Map<Object, Object> res = new HashMap<>();
         res.put("status", "failed");
-/*        if(hrService.verifyLogin(username, token)){
+        if(hrService.verifyLogin(username, token)){
             res.put("status", "success");
-        }*/
+        }
         return res;
     }
 
@@ -66,12 +66,10 @@ public class HrController {
             res.put("reason", "errorBody");
             return res;
         }
-        /*
         if(!hrService.verifyLogin(username, token)){
             res.put("reason", "notLogged");
             return res;
         }
-        */
         Worker worker = new Worker();
         worker.setWksName(jsonObject.getString("name"));
         worker.setWksAddress(jsonObject.getString("address"));
@@ -100,12 +98,10 @@ public class HrController {
             @RequestParam("type") Integer type, @RequestParam("key") String key){
         Map<Object, Object> res = new HashMap<>();
         res.put("status", "failed");
-        /*
         if(!hrService.verifyLogin(username, token)){
             res.put("reason", "notLogged");
             return res;
         }
-        */
         if(hrService.deleteWorker(type, key) == 1) {
             res.put("status", "success");
             Log log = new Log();
@@ -126,12 +122,10 @@ public class HrController {
             @RequestParam("type") Integer type, @RequestParam("key") String key){
         Map<Object, Object> res = new HashMap<>();
         res.put("status", "failed");
-        /*
         if(!hrService.verifyLogin(username, token)){
             res.put("reason", "notLogged");
             return res;
         }
-        */
         List<Worker> worker = hrService.getWorker(type, key);
         if(worker != null)
         {
@@ -147,12 +141,10 @@ public class HrController {
     public Object getWorkers( @CookieValue(name = "username", required = false) String username, @CookieValue(name = "token", required = false) String token){
         Map<Object, Object> res = new HashMap<>();
         res.put("status", "failed");
-        /*
         if(!hrService.verifyLogin(username, token)){
             res.put("reason", "notLogged");
             return res;
         }
-        */
         res.put("workers", hrService.getWorkers());
         res.put("status", "success");
         return res;
@@ -162,12 +154,10 @@ public class HrController {
     public Object deleteAll( @CookieValue(name = "username", required = false) String username, @CookieValue(name = "token", required = false) String token){
         Map<Object, Object> res = new HashMap<>();
         res.put("status", "failed");
-        /*
         if(!hrService.verifyLogin(username, token)){
             res.put("reason", "notLogged");
             return res;
         }
-        */
         if(hrService.deleteAll()) {
             if(ifLog) {
                 Log log = new Log();
@@ -192,13 +182,10 @@ public class HrController {
             res.put("reason", "errorBody");
             return res;
         }
-        /*
         if(!hrService.verifyLogin(username, token)){
             res.put("reason", "notLogged");
             return res;
         }
-        */
-
         Worker oldWorker = hrService.getWorker(jsonObject.getInteger("uid"));
         Worker worker = new Worker();
         worker.setWksName(jsonObject.getString("name"));

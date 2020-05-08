@@ -55,10 +55,10 @@ public class AdminController {
             res.put("reason", "errorBody");
             return res;
         }
-        /*if(!adminService.verifyLogin(username, token)){
+        if(!adminService.verifyLogin(username, token)){
             res.put("reason", "notLogged");
             return res;
-        }*/
+        }
         Hr hr = new Hr();
         hr.setHrName(jsonObject.getString("name"));
         hr.setHrNumber(jsonObject.getString("number"));
@@ -79,12 +79,10 @@ public class AdminController {
                         @RequestParam("type") Integer type, @RequestParam("key") String key){
         Map<Object, Object> res = new HashMap<>();
         res.put("status", "failed");
-        /*
         if(!adminService.verifyLogin(username, token)){
             res.put("reason", "notLogged");
             return res;
         }
-        */
         if(adminService.deleteHr(type, key) == 1)
             res.put("status", "success");
         else if (adminService.deleteHr(type, key) == 2)
@@ -100,12 +98,10 @@ public class AdminController {
                         @RequestParam("type") Integer type, @RequestParam("key") String key){
         Map<Object, Object> res = new HashMap<>();
         res.put("status", "failed");
-        /*
         if(!adminService.verifyLogin(username, token)){
             res.put("reason", "notLogged");
             return res;
         }
-        */
         Hr hr = adminService.getHr(type, key);
         if(hr != null)
         {
@@ -121,12 +117,10 @@ public class AdminController {
     public Object getHrs( @CookieValue(name = "username", required = false) String username, @CookieValue(name = "token", required = false) String token){
         Map<Object, Object> res = new HashMap<>();
         res.put("status", "failed");
-        /*
         if(!adminService.verifyLogin(username, token)){
             res.put("reason", "notLogged");
             return res;
         }
-        */
         res.put("hrs", adminService.getHrs());
         res.put("status", "success");
         return res;
@@ -136,12 +130,10 @@ public class AdminController {
     public Object deleteAll( @CookieValue(name = "username", required = false) String username, @CookieValue(name = "token", required = false) String token){
         Map<Object, Object> res = new HashMap<>();
         res.put("status", "failed");
-        /*
         if(!adminService.verifyLogin(username, token)){
             res.put("reason", "notLogged");
             return res;
         }
-        */
         if(adminService.deleteAll())
             res.put("status", "success");
         return res;
@@ -158,12 +150,10 @@ public class AdminController {
             res.put("reason", "errorBody");
             return res;
         }
-        /*
         if(!adminService.verifyLogin(username, token)){
             res.put("reason", "notLogged");
             return res;
         }
-        */
         Hr hr = new Hr();
         hr.setId(jsonObject.getIntValue("uid"));
         hr.setHrName(jsonObject.getString("name"));
@@ -186,12 +176,10 @@ public class AdminController {
     public Object getLogs( @CookieValue(name = "username", required = false) String username, @CookieValue(name = "token", required = false) String token){
         Map<Object, Object> res = new HashMap<>();
         res.put("status", "failed");
-        /*
         if(!adminService.verifyLogin(username, token)){
             res.put("reason", "notLogged");
             return res;
         }
-        */
         res.put("status", "success");
         res.put("logs", adminService.getLogs());
         return res;
