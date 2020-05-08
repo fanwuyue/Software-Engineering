@@ -6,9 +6,17 @@ $(document).ready(function() {
 var link='http://sw.womoe.top';
 var uid;
 $("#delete").click(function(event) {
+
   var s=$("#type").find("option:selected").val();
   var key=$("#keyword").val();
-
+  console.log(key.length);
+    if(key.length==0){
+      alert('请输入关键字');
+      return ;
+    }
+    if(!confirm("是否删除工程师")){
+      return ;
+    }
     $.ajax({
       url: link+'/hr/deleteWorker?type='+s+'&key='+key,
       type: 'GET',

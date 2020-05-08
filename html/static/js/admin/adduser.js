@@ -3,6 +3,8 @@ var link='http://sw.womoe.top';
 $("#quit").click(function(){
   window.location.href="../home.html";
 });
+
+
 $("#submit").click(function(event) {
   var id=$("#id").val();
   var name=$("#name").val();
@@ -13,7 +15,7 @@ $("#submit").click(function(event) {
   for (var i=0;i<obj.length;i++){ //遍历Radio
     if(obj[i].checked){
        sex=obj[i].value;
-       if(sex=='1'){
+       if(sex=='0'){
          sex='女';
        }else{
          sex='男';
@@ -22,8 +24,31 @@ $("#submit").click(function(event) {
   }
   var phone=$("#phone").val();
   var wyear=$("#working_year").val();
+  function check(id,name,phone){
+    if(id<0||id>9999||isNaN(id)||id.length!=4)
+    {
+      alert('编号格式应为：4位数字 如0001');
+      return false;
+    }
+    if(name.length>20){
+      alert('姓名长度不能超过20');
+      return false;
+    }
+    if(phone.length!=11||isNaN(phone)){
+      alert('电话号码为11位数字');
+      return ;
+    }
+    if(!confirm('是否提交')){
+      return  false;
+    }
+    return true;
+  }
+  if(!check(id,name,phone)){
+    return ;
+  }
   if(id==null||name==null||username==null||password==null||sex==null||phone==null||wyear==null){
     alert("信息不得为空");
+    return ;
   }
 //alert(name);
   var a = {};

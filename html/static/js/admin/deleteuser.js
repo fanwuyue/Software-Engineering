@@ -8,7 +8,9 @@ var uid;
 $("#delete").click(function(event) {
   var s=$("#type").find("option:selected").val();
   var key=$("#keyword").val().toString();
-
+  if(!confirm("是否删除用户")){
+    return ;
+  }
     $.ajax({
       url: link+'/admin/deleteHr?type='+s+'&key='+key,
       type: 'GET',

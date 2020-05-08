@@ -2,7 +2,9 @@ $(document).ready(function() {
 
 var link='http://sw.womoe.top';
 $("#empty").click(function(event) {
-  alert('1');
+  if(!confirm("是否清空所有用户")){
+    return ;
+  }
     $.ajax({
       url: link+'/admin/deleteAll',
       type: 'GET',

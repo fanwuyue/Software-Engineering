@@ -37,7 +37,41 @@ $("#submit").click(function(event) {
   var phone=$("#phone").val();
   var wyear=$("#working_year").val();
   var salary=$("#salary").val();
-  console.log(education);
+  //console.log(education);
+  function check(id,name,phonem,domicile,address,salary){
+    if(id<0||id>9999||isNaN(id)||id.length!=4)
+    {
+      alert('编号格式应为：4位数字 如0001');
+      return false;
+    }
+    if(name.length>20){
+      alert('姓名长度不能超过20');
+      return false;
+    }
+    if(phone.length!=11||isNaN(phone)){
+      alert('电话号码为11位数字');
+      return ;
+    }
+    if(domicile.length>10){
+      alert('籍贯长度不能超过10个字符');
+      return ;
+    }
+    if(address.length>30){
+      alert('地址长度不能超过30个字符');
+      return ;
+    }
+    if(salary<0){
+      alert('工资不能为负数');
+      return ;
+    }
+    if(!confirm('是否提交')){
+      return  false;
+    }
+    return true;
+  }
+  if(!check(id,name,phone,domicile,address,salary)){
+    return ;
+  }
 //alert(name);
   var a = {};
   a.name = name;
