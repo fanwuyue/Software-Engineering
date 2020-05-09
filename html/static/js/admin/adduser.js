@@ -97,6 +97,9 @@ $("#submit").click(function(event) {
   if(data.reason=='notLogged'){
     alert('没有登陆或cookie失效');
   }
+  if(data.reason=='nameAlreadyExists'){
+    alert('用户名已存在');
+  }
 }
 })
 .fail(function() {
