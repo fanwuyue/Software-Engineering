@@ -67,10 +67,12 @@ public class AdminController {
         hr.setHrSex(jsonObject.getString("sex"));
         hr.setHrUsername(jsonObject.getString("username"));
         hr.setHrTelephone(jsonObject.getString("telephone"));
-        if(adminService.addHr(hr))
+        if(adminService.addHr(hr) == 1)
             res.put("status", "success");
-        else
-            res.put("reason", "insertError");
+        else if (adminService.addHr(hr) == 2)
+            res.put("reason", "numberAlreadyExists");
+        else if (adminService.addHr(hr) == 3)
+            res.put("reason", "nameAlreadyExists");
         return res;
     }
 

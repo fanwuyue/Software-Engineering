@@ -13,7 +13,7 @@ public interface AdminService {
     boolean verifyPassword(String username, String password);
     boolean verifyLogin(String username, String token);
     boolean updateToken(String username, String Token);
-    boolean addHr(Hr hr);
+    int addHr(Hr hr);
     int deleteHr(int type, String key);
     int updateHr(Hr hr);
     List<Hr> getHrs();

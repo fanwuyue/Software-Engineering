@@ -58,15 +58,15 @@ public class AdminServiceImpl implements AdminService {
         admin.setAdminToken(token);
         return 1 == adminMapper.updateByPrimaryKey(admin);
     }
-
-    public boolean addHr(Hr hr) {
+    // 1 成功 2 编号已存在 3 姓名已存在
+    public int addHr(Hr hr) {
         HrExample hrExample = new HrExample();
         hrExample.createCriteria().andHrUsernameEqualTo(hr.getHrUsername());
         if(hrMapper.selectByExample(hrExample).size() != 0)
-            return false;
+            return 3;
         if(getHr(0, hr.getHrNumber()) == null)
-            return hrMapper.insert(hr) > 0;
-        return false;
+            return hrMapper.insert(hr) > 0 ? 1 : 2;
+        return 2;
     }
 
     // 1 成功 2 失败 3 无此用户

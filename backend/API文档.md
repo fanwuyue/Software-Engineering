@@ -76,7 +76,8 @@
     {
         errorBody: '请求体有误',
         notLogged: '没有登陆或cookie失效',
-        insertError: '插入失败(编号已存在)'
+        numberAlreadyExists: '插入失败(编号已存在)',
+        nameAlreadyExists: '插入失败(姓名已存在)'
     }
 ```
 
