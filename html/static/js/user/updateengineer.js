@@ -146,7 +146,7 @@ if(!check(id,name,phone,domicile,address,salary)){
   a.number = id;
   a.address=address;
   a.birthDate=buquan(year,2)+'-'+buquan(month,2)+'-'+buquan(day,2);
-  a.baseSalary=parseInt(salary);
+  a.baseSalary=parseFloat(salary);
   a.hometown=domicile;
   a.edu=parseInt(education);
   //console.log(sex);
