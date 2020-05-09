@@ -23,7 +23,7 @@ $("#search").click(function(event) {
         if(w==null){
           alert('没有此用户');
         }else{
-        //uid=w.id;
+        uid=w.id;
         $("#id").val(w.wksNumber);
         $("#name").val(w.wksName);
        console.log(w.wksName);
