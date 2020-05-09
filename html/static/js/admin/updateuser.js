@@ -105,7 +105,7 @@ function check(id,name,phone,username,password){
   }
   return true;
 }
-if(!check(id,name,phone)){
+if(!check(id,name,phone,username,password)){
   return ;
 }
   var a = {};
