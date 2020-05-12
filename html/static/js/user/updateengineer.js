@@ -1,6 +1,22 @@
 $(document).ready(function() {
 var link='http://sw.womoe.top';
 var uid;
+function getMyDate(str) {
+    var oDate = new Date(str),
+    oYear = oDate.getFullYear(),
+    oMonth = oDate.getMonth()+1,
+    oDay = oDate.getDate(),
+  
+    oTime = oYear +'-'+ addZero(oMonth) +'-'+ addZero(oDay) ;
+    return oTime;
+}
+
+function addZero(num){
+    if(parseInt(num) < 10){
+        num = '0'+num;
+    }
+    return num;
+}
 $("#quit").click(function(){
   window.location.href="../home.html";
 });
@@ -33,7 +49,7 @@ $("#search").click(function(event) {
         }else{
             $("#sex1").click();
         }
-        $('#year').val(w.wksBirthdate);
+        $('#year').val(getMyDate(w.wksBirthdate));
         $('#domicile').val(w.wksHometown);
         $('#address').val(w.wksAddress);
         $("#phone").val(w.wksTelephone);
