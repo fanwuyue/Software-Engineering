@@ -133,8 +133,8 @@ if(!check(id,name,phone,username,password)){
   alert("修改成功");
 }else{
   console.log(data);
-  if(data.reason=='insertError'){
-      alert('插入失败(编号已存在)');
+  if(data.reason=='numberAlreadyExists'){
+      alert('编号已存在');
   }
   if(data.reason=='errorBody'){
     alert('请求体有误');
@@ -142,8 +142,8 @@ if(!check(id,name,phone,username,password)){
   if(data.reason=='notLogged'){
     alert('没有登陆或cookie失效');
   }
-  if(data.reason=='numberAlreadyExists'){
-    alert('所填编号已存在');
+  if(data.reason=='nameAlreadyExists'){
+    alert('用户名已存在');
   }
 }
 })

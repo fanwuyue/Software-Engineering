@@ -29,16 +29,14 @@ $("#submit").click(function(event) {
     return numstr;
    }
   console.log((sex==null));
-  var year=$('#year option:selected').val();
-  var month=$('#month option:selected').val();
-  var day=$('#day option:selected').val();
+  var date=$('#year').val();
   var education=$('#education option:selected').val();
   var domicile=$("#domicile").val();
   var address=$("#address").val();
   var phone=$("#phone").val();
   var wyear=$("#working_year").val();
   var salary=$("#salary").val();
-  if(id.length==0||name.length==0||sex==null||phone.length==0||wyear==null||month==null||day==null||year==null||education==null||domicile.length==0||address.length==0){
+  if(id.length==0||name.length==0||sex==null||phone.length==0||wyear==null||date==null||education==null||domicile.length==0||address.length==0){
     alert("信息不得为空");
     return ;
   }
@@ -89,7 +87,7 @@ $("#submit").click(function(event) {
   a.seniority =parseInt(wyear);
   a.number = id;
   a.address=address;
-  a.birthDate=buquan(year,2)+'-'+buquan(month,2)+'-'+buquan(day,2);
+  a.birthDate=date;
   a.baseSalary=parseFloat(salary);
   a.hometown=domicile;
   a.edu=parseInt(education);

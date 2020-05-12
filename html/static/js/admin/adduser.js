@@ -38,8 +38,8 @@ $("#submit").click(function(event) {
       alert('姓名长度不能超过20');
       return false;
     }
-    if(username.length<8||username.length>20){
-      alert('用户名长度应在8~20之间');
+    if(username.length<3||username.length>20){
+      alert('用户名长度应在3~20之间');
       return false;
     }
     if(password.length<8||password.length>20){
@@ -88,8 +88,8 @@ $("#submit").click(function(event) {
   alert("添加成功");
 }else{
   console.log(data);
-  if(data.reason=='insertError'){
-      alert('插入失败(编号已存在)');
+  if(data.reason=='numberAlreadyExists'){
+      alert('编号已存在');
   }
   if(data.reason=='errorBody'){
     alert('请求体有误');
