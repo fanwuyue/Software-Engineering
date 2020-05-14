@@ -108,7 +108,7 @@ $("#submit").click(function(event) {
   var salary=$("#salary").val();
   //console.log(education);
 //alert(name);
-if(id.length==0||name.length==0||sex==null||phone.length==0||wyear==null||year==null||education==null||domicile.length==0||address.length==0){
+if(id.length==0||name.length==0||sex==null||phone.length==0||date.length==0||wyear==null||year==null||education==null||domicile.length==0||address.length==0){
   alert("信息不得为空");
   return ;
 }

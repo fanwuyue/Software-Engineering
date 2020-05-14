@@ -43,14 +43,14 @@
 <div class="addengineer-form-border">
   <div class="input-group" style="margin-left: 20%; margin-right: 20%;">
       <span class="input-group-addon">编号</span>
-      <input class="form-control" type="text" id="id" placeholder="编号">
+      <input class="form-control" type="number" id="id" placeholder="编号" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')">
   </div>
 </div>
 
 <div class="addengineer-form-border">
   <div class="input-group" style="margin-left: 20%; margin-right: 20%;">
       <span class="input-group-addon">姓名</span>
-      <input class="form-control" type="text" id="name" placeholder="姓名">
+        <input class="form-control" type="text" id="name" placeholder="只能输入英文和汉字" onkeyup="this.value=this.value.replace(/\s+/g,'')" onkeyup="value=value.replace(/[\d]/g,'') "onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[\d]/g,''))" maxlength=10 name="Numbers">
   </div>
 </div>
 
@@ -98,7 +98,7 @@
 <div class="addengineer-form-border">
   <div class="input-group" style="margin-left: 20%; margin-right: 20%;">
     <span class="input-group-addon">贯籍</span>
-    <input class="form-control" type="text" id="domicile" placeholder="贯籍">
+    <input class="form-control" type="text" id="domicile" placeholder="贯籍" onkeyup="this.value=this.value.replace(/\s+/g,'')">
   </div>
 </div>
 
@@ -106,7 +106,7 @@
 <div class="addengineer-form-border">
   <div class="input-group" style="margin-left: 20%; margin-right: 20%;">
     <span class="input-group-addon">地址</span>
-    <input class="form-control" type="text" id="address" placeholder="地址">
+    <input class="form-control" type="text" id="address" placeholder="地址" onkeyup="this.value=this.value.replace(/\s+/g,'')">
   </div>
 </div>
 
@@ -114,7 +114,7 @@
 <div class="addengineer-form-border">
   <div class="input-group" style="margin-left: 20%; margin-right: 20%;">
     <span class="input-group-addon">电话</span>
-    <input class="form-control" type="number" id="phone" placeholder="电话">
+    <input class="form-control" type="number" id="phone" placeholder="电话" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')">
   </div>
 </div>
 
@@ -132,7 +132,7 @@
 <div class="addengineer-form-border">
   <div class="input-group" style="margin-left: 20%; margin-right: 20%;">
     <span class="input-group-addon">工资</span>
-    <input class="form-control" type="number" id="salary" placeholder="工资">
+    <input class="form-control" type="number" id="salary" placeholder="工资" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')">
   </div>
 </div>
 

@@ -36,7 +36,7 @@ $("#submit").click(function(event) {
   var phone=$("#phone").val();
   var wyear=$("#working_year").val();
   var salary=$("#salary").val();
-  if(id.length==0||name.length==0||sex==null||phone.length==0||wyear==null||date==null||education==null||domicile.length==0||address.length==0){
+  if(id.length==0||name.length==0||sex==null||phone.length==0||date.length==0||wyear==null||date==null||education==null||domicile.length==0||address.length==0){
     alert("信息不得为空");
     return ;
   }
