@@ -23,7 +23,7 @@ public class Worker {
 
     private Integer wksSeniority;
 
-    private Integer wksBasesalary;
+    private Float wksBasesalary;
 
     private String wksSex;
 
@@ -119,11 +119,11 @@ public class Worker {
         this.wksSeniority = wksSeniority;
     }
 
-    public Integer getWksBasesalary() {
+    public Float getWksBasesalary() {
         return wksBasesalary;
     }
 
-    public void setWksBasesalary(Integer wksBasesalary) {
+    public void setWksBasesalary(Float wksBasesalary) {
         this.wksBasesalary = wksBasesalary;
     }
 

@@ -2,6 +2,7 @@ package top.womoe.model;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 public class WorkerExample {
@@ -103,6 +104,32 @@ public class WorkerExample {
                 throw new RuntimeException("Between values for " + property + " cannot be null");
             }
             criteria.add(new Criterion(condition, value1, value2));
+        }
+
+        protected void addCriterionForJDBCDate(String condition, Date value, String property) {
+            if (value == null) {
+                throw new RuntimeException("Value for " + property + " cannot be null");
+            }
+            addCriterion(condition, new java.sql.Date(value.getTime()), property);
+        }
+
+        protected void addCriterionForJDBCDate(String condition, List<Date> values, String property) {
+            if (values == null || values.size() == 0) {
+                throw new RuntimeException("Value list for " + property + " cannot be null or empty");
+            }
+            List<java.sql.Date> dateList = new ArrayList<java.sql.Date>();
+            Iterator<Date> iter = values.iterator();
+            while (iter.hasNext()) {
+                dateList.add(new java.sql.Date(iter.next().getTime()));
+            }
+            addCriterion(condition, dateList, property);
+        }
+
+        protected void addCriterionForJDBCDate(String condition, Date value1, Date value2, String property) {
+            if (value1 == null || value2 == null) {
+                throw new RuntimeException("Between values for " + property + " cannot be null");
+            }
+            addCriterion(condition, new java.sql.Date(value1.getTime()), new java.sql.Date(value2.getTime()), property);
         }
 
         public Criteria andIdIsNull() {
@@ -316,52 +343,52 @@ public class WorkerExample {
         }
 
         public Criteria andWksBirthdateEqualTo(Date value) {
-            addCriterion("wks_birthdate =", value, "wksBirthdate");
+            addCriterionForJDBCDate("wks_birthdate =", value, "wksBirthdate");
             return (Criteria) this;
         }
 
         public Criteria andWksBirthdateNotEqualTo(Date value) {
-            addCriterion("wks_birthdate <>", value, "wksBirthdate");
+            addCriterionForJDBCDate("wks_birthdate <>", value, "wksBirthdate");
             return (Criteria) this;
         }
 
         public Criteria andWksBirthdateGreaterThan(Date value) {
-            addCriterion("wks_birthdate >", value, "wksBirthdate");
+            addCriterionForJDBCDate("wks_birthdate >", value, "wksBirthdate");
             return (Criteria) this;
         }
 
         public Criteria andWksBirthdateGreaterThanOrEqualTo(Date value) {
-            addCriterion("wks_birthdate >=", value, "wksBirthdate");
+            addCriterionForJDBCDate("wks_birthdate >=", value, "wksBirthdate");
             return (Criteria) this;
         }
 
         public Criteria andWksBirthdateLessThan(Date value) {
-            addCriterion("wks_birthdate <", value, "wksBirthdate");
+            addCriterionForJDBCDate("wks_birthdate <", value, "wksBirthdate");
             return (Criteria) this;
         }
 
         public Criteria andWksBirthdateLessThanOrEqualTo(Date value) {
-            addCriterion("wks_birthdate <=", value, "wksBirthdate");
+            addCriterionForJDBCDate("wks_birthdate <=", value, "wksBirthdate");
             return (Criteria) this;
         }
 
         public Criteria andWksBirthdateIn(List<Date> values) {
-            addCriterion("wks_birthdate in", values, "wksBirthdate");
+            addCriterionForJDBCDate("wks_birthdate in", values, "wksBirthdate");
             return (Criteria) this;
         }
 
         public Criteria andWksBirthdateNotIn(List<Date> values) {
-            addCriterion("wks_birthdate not in", values, "wksBirthdate");
+            addCriterionForJDBCDate("wks_birthdate not in", values, "wksBirthdate");
             return (Criteria) this;
         }
 
         public Criteria andWksBirthdateBetween(Date value1, Date value2) {
-            addCriterion("wks_birthdate between", value1, value2, "wksBirthdate");
+            addCriterionForJDBCDate("wks_birthdate between", value1, value2, "wksBirthdate");
             return (Criteria) this;
         }
 
         public Criteria andWksBirthdateNotBetween(Date value1, Date value2) {
-            addCriterion("wks_birthdate not between", value1, value2, "wksBirthdate");
+            addCriterionForJDBCDate("wks_birthdate not between", value1, value2, "wksBirthdate");
             return (Criteria) this;
         }
 
@@ -705,52 +732,52 @@ public class WorkerExample {
             return (Criteria) this;
         }
 
-        public Criteria andWksBasesalaryEqualTo(Integer value) {
+        public Criteria andWksBasesalaryEqualTo(Float value) {
             addCriterion("wks_basesalary =", value, "wksBasesalary");
             return (Criteria) this;
         }
 
-        public Criteria andWksBasesalaryNotEqualTo(Integer value) {
+        public Criteria andWksBasesalaryNotEqualTo(Float value) {
             addCriterion("wks_basesalary <>", value, "wksBasesalary");
             return (Criteria) this;
         }
 
-        public Criteria andWksBasesalaryGreaterThan(Integer value) {
+        public Criteria andWksBasesalaryGreaterThan(Float value) {
             addCriterion("wks_basesalary >", value, "wksBasesalary");
             return (Criteria) this;
         }
 
-        public Criteria andWksBasesalaryGreaterThanOrEqualTo(Integer value) {
+        public Criteria andWksBasesalaryGreaterThanOrEqualTo(Float value) {
             addCriterion("wks_basesalary >=", value, "wksBasesalary");
             return (Criteria) this;
         }
 
-        public Criteria andWksBasesalaryLessThan(Integer value) {
+        public Criteria andWksBasesalaryLessThan(Float value) {
             addCriterion("wks_basesalary <", value, "wksBasesalary");
             return (Criteria) this;
         }
 
-        public Criteria andWksBasesalaryLessThanOrEqualTo(Integer value) {
+        public Criteria andWksBasesalaryLessThanOrEqualTo(Float value) {
             addCriterion("wks_basesalary <=", value, "wksBasesalary");
             return (Criteria) this;
         }
 
-        public Criteria andWksBasesalaryIn(List<Integer> values) {
+        public Criteria andWksBasesalaryIn(List<Float> values) {
             addCriterion("wks_basesalary in", values, "wksBasesalary");
             return (Criteria) this;
         }
 
-        public Criteria andWksBasesalaryNotIn(List<Integer> values) {
+        public Criteria andWksBasesalaryNotIn(List<Float> values) {
             addCriterion("wks_basesalary not in", values, "wksBasesalary");
             return (Criteria) this;
         }
 
-        public Criteria andWksBasesalaryBetween(Integer value1, Integer value2) {
+        public Criteria andWksBasesalaryBetween(Float value1, Float value2) {
             addCriterion("wks_basesalary between", value1, value2, "wksBasesalary");
             return (Criteria) this;
         }
 
-        public Criteria andWksBasesalaryNotBetween(Integer value1, Integer value2) {
+        public Criteria andWksBasesalaryNotBetween(Float value1, Float value2) {
             addCriterion("wks_basesalary not between", value1, value2, "wksBasesalary");
             return (Criteria) this;
         }

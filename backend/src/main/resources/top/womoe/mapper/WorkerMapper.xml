@@ -5,13 +5,13 @@
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="wks_number" jdbcType="VARCHAR" property="wksNumber" />
     <result column="wks_name" jdbcType="VARCHAR" property="wksName" />
-    <result column="wks_birthdate" jdbcType="TIMESTAMP" property="wksBirthdate" />
+    <result column="wks_birthdate" jdbcType="DATE" property="wksBirthdate" />
     <result column="wks_edu" jdbcType="INTEGER" property="wksEdu" />
     <result column="wks_hometown" jdbcType="VARCHAR" property="wksHometown" />
     <result column="wks_address" jdbcType="VARCHAR" property="wksAddress" />
     <result column="wks_telephone" jdbcType="VARCHAR" property="wksTelephone" />
     <result column="wks_seniority" jdbcType="INTEGER" property="wksSeniority" />
-    <result column="wks_basesalary" jdbcType="INTEGER" property="wksBasesalary" />
+    <result column="wks_basesalary" jdbcType="REAL" property="wksBasesalary" />
     <result column="wks_sex" jdbcType="VARCHAR" property="wksSex" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -112,9 +112,9 @@
       wks_address, wks_telephone, wks_seniority, 
       wks_basesalary, wks_sex)
     values (#{id,jdbcType=INTEGER}, #{wksNumber,jdbcType=VARCHAR}, #{wksName,jdbcType=VARCHAR}, 
-      #{wksBirthdate,jdbcType=TIMESTAMP}, #{wksEdu,jdbcType=INTEGER}, #{wksHometown,jdbcType=VARCHAR}, 
+      #{wksBirthdate,jdbcType=DATE}, #{wksEdu,jdbcType=INTEGER}, #{wksHometown,jdbcType=VARCHAR}, 
       #{wksAddress,jdbcType=VARCHAR}, #{wksTelephone,jdbcType=VARCHAR}, #{wksSeniority,jdbcType=INTEGER}, 
-      #{wksBasesalary,jdbcType=INTEGER}, #{wksSex,jdbcType=VARCHAR})
+      #{wksBasesalary,jdbcType=REAL}, #{wksSex,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="top.womoe.model.Worker">
     insert into sw_workers
@@ -164,7 +164,7 @@
         #{wksName,jdbcType=VARCHAR},
       </if>
       <if test="wksBirthdate != null">
-        #{wksBirthdate,jdbcType=TIMESTAMP},
+        #{wksBirthdate,jdbcType=DATE},
       </if>
       <if test="wksEdu != null">
         #{wksEdu,jdbcType=INTEGER},
@@ -182,7 +182,7 @@
         #{wksSeniority,jdbcType=INTEGER},
       </if>
       <if test="wksBasesalary != null">
-        #{wksBasesalary,jdbcType=INTEGER},
+        #{wksBasesalary,jdbcType=REAL},
       </if>
       <if test="wksSex != null">
         #{wksSex,jdbcType=VARCHAR},
@@ -208,7 +208,7 @@
         wks_name = #{record.wksName,jdbcType=VARCHAR},
       </if>
       <if test="record.wksBirthdate != null">
-        wks_birthdate = #{record.wksBirthdate,jdbcType=TIMESTAMP},
+        wks_birthdate = #{record.wksBirthdate,jdbcType=DATE},
       </if>
       <if test="record.wksEdu != null">
         wks_edu = #{record.wksEdu,jdbcType=INTEGER},
@@ -226,7 +226,7 @@
         wks_seniority = #{record.wksSeniority,jdbcType=INTEGER},
       </if>
       <if test="record.wksBasesalary != null">
-        wks_basesalary = #{record.wksBasesalary,jdbcType=INTEGER},
+        wks_basesalary = #{record.wksBasesalary,jdbcType=REAL},
       </if>
       <if test="record.wksSex != null">
         wks_sex = #{record.wksSex,jdbcType=VARCHAR},
@@ -241,13 +241,13 @@
     set id = #{record.id,jdbcType=INTEGER},
       wks_number = #{record.wksNumber,jdbcType=VARCHAR},
       wks_name = #{record.wksName,jdbcType=VARCHAR},
-      wks_birthdate = #{record.wksBirthdate,jdbcType=TIMESTAMP},
+      wks_birthdate = #{record.wksBirthdate,jdbcType=DATE},
       wks_edu = #{record.wksEdu,jdbcType=INTEGER},
       wks_hometown = #{record.wksHometown,jdbcType=VARCHAR},
       wks_address = #{record.wksAddress,jdbcType=VARCHAR},
       wks_telephone = #{record.wksTelephone,jdbcType=VARCHAR},
       wks_seniority = #{record.wksSeniority,jdbcType=INTEGER},
-      wks_basesalary = #{record.wksBasesalary,jdbcType=INTEGER},
+      wks_basesalary = #{record.wksBasesalary,jdbcType=REAL},
       wks_sex = #{record.wksSex,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -263,7 +263,7 @@
         wks_name = #{wksName,jdbcType=VARCHAR},
       </if>
       <if test="wksBirthdate != null">
-        wks_birthdate = #{wksBirthdate,jdbcType=TIMESTAMP},
+        wks_birthdate = #{wksBirthdate,jdbcType=DATE},
       </if>
       <if test="wksEdu != null">
         wks_edu = #{wksEdu,jdbcType=INTEGER},
@@ -281,7 +281,7 @@
         wks_seniority = #{wksSeniority,jdbcType=INTEGER},
       </if>
       <if test="wksBasesalary != null">
-        wks_basesalary = #{wksBasesalary,jdbcType=INTEGER},
+        wks_basesalary = #{wksBasesalary,jdbcType=REAL},
       </if>
       <if test="wksSex != null">
         wks_sex = #{wksSex,jdbcType=VARCHAR},
@@ -293,13 +293,13 @@
     update sw_workers
     set wks_number = #{wksNumber,jdbcType=VARCHAR},
       wks_name = #{wksName,jdbcType=VARCHAR},
-      wks_birthdate = #{wksBirthdate,jdbcType=TIMESTAMP},
+      wks_birthdate = #{wksBirthdate,jdbcType=DATE},
       wks_edu = #{wksEdu,jdbcType=INTEGER},
       wks_hometown = #{wksHometown,jdbcType=VARCHAR},
       wks_address = #{wksAddress,jdbcType=VARCHAR},
       wks_telephone = #{wksTelephone,jdbcType=VARCHAR},
       wks_seniority = #{wksSeniority,jdbcType=INTEGER},
-      wks_basesalary = #{wksBasesalary,jdbcType=INTEGER},
+      wks_basesalary = #{wksBasesalary,jdbcType=REAL},
       wks_sex = #{wksSex,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>

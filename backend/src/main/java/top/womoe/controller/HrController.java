@@ -23,7 +23,7 @@ import java.util.Map;
 @RequestMapping("hr")
 public class HrController {
 
-    boolean ifLog = false;
+    boolean ifLog = true;
     DateFormat df=new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
     @Autowired
@@ -75,7 +75,7 @@ public class HrController {
         worker.setWksAddress(jsonObject.getString("address"));
         worker.setWksBirthdate(jsonObject.getDate("birthDate"));
         worker.setWksNumber(jsonObject.getString("number"));
-        worker.setWksBasesalary(jsonObject.getInteger("baseSalary"));
+        worker.setWksBasesalary(jsonObject.getFloat("baseSalary"));
         worker.setWksHometown(jsonObject.getString("hometown"));
         worker.setWksSeniority(jsonObject.getInteger("seniority"));
         worker.setWksSex(jsonObject.getString("sex"));
@@ -192,7 +192,7 @@ public class HrController {
         worker.setWksAddress(jsonObject.getString("address"));
         worker.setWksBirthdate(jsonObject.getDate("birthDate"));
         worker.setWksNumber(jsonObject.getString("number"));
-        worker.setWksBasesalary(jsonObject.getInteger("baseSalary"));
+        worker.setWksBasesalary(jsonObject.getFloat("baseSalary"));
         worker.setId(jsonObject.getIntValue("uid"));
         worker.setWksHometown(jsonObject.getString("hometown"));
         worker.setWksSeniority(jsonObject.getInteger("seniority"));
