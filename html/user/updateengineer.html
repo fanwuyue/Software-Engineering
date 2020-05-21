@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+    <script src="../static/js/user/updateengineer.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+  <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <!-- 导入图片背景 -->
+  <link rel="stylesheet" href="../static/css/background.css">
+  <link rel="stylesheet" href="../static/css/style.css">
+  <script src="../static/js/background.js"></script>
+  <script src="../static/js/base-js.js"></script>
+  <title>修改工程师资料</title>
+</head>
+<body style="overflow-y: auto;">
+  <!-- 导航栏 -->
+  <nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+      <div class="navbar-header">
+          <a class="navbar-brand" href="#">修改工程师资料</a>
+      </div>
+      <div>
+          <form class="navbar-form navbar-left" >
+            <div class="">
+              <div class="input-group">
+                <span class="input-group-addon">查询类型</span>
+                <select id="type" class="form-control">
+                  <option value="0">编号</option>
+                  <option value="1">姓名</option>
+                </select>
+              </div>
+              <div class="input-group">
+                <span class="input-group-addon">关键字</span>
+                <input type="text"  id="keyword" placeholder="搜索关键字">
+              </div>
+              <div class="input-group">
+                <button type="button" class="btn btn-info" style="margin-top: 10%" id="search">搜索</button>
+              </div>
+            </div>
+          </form>
+
+          <div class="navbar-right">
+            <button type="button" class="btn btn-info" style="margin-top: 10%" id="quit">退出系统</button>
+          </div>
+
+        <div class="nav navbar-nav navbar-right">
+          <ul class="nav navbar-nav">
+            <li><a href="./index.html">返回主页</a></li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+</nav>
+
+
+<!-- 添加信息块 -->
+<div class="addengineer-form-border">
+  <div class="input-group" style="margin-left: 20%; margin-right: 20%;">
+      <span class="input-group-addon">编号</span>
+      <input class="form-control" type="number" id="id" placeholder="编号" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')">
+  </div>
+</div>
+
+<div class="addengineer-form-border">
+  <div class="input-group" style="margin-left: 20%; margin-right: 20%;">
+      <span class="input-group-addon">姓名</span>
+      <input class="form-control" type="text" id="name" placeholder="只能输入英文和汉字" onkeyup="this.value=this.value.replace(/\s+/g,'')" onkeyup="value=value.replace(/[\d]/g,'') "onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[\d]/g,''))" maxlength=10 name="Numbers">
+
+  </div>
+</div>
+
+<div class="addengineer-form-border">
+  <div class="form-group" style="margin-left: 20%; margin-right: 20%;">
+    <span class="input-group-addon">性别</span>
+    <div style="background-color: rgba(255, 255, 255, 0.5);">
+      <label class="radio-inline" style="margin-right: 80%;">
+        <input type="radio" id="sex1" name="sex" value="0">女
+      </label>
+      <label class="radio-inline">
+          <input type="radio" id="sex2" name="sex" value="1">男
+      </label>
+    </div>
+  </div>
+</div>
+<div class="addengineer-form-border">
+    <div class="row" style="margin-left:20%;">
+      <div class="form-inline">
+        <div class="input-group" style="width: 20%;">
+          <span class="input-group-addon">出生日期</span>
+          <input type="date" id="year" class="form-control">
+        </div>
+      </div>
+    </div>
+</div>
+
+<!-- 学历 -->
+<div class="addengineer-form-border">
+  <div class="input-group" style="margin-left: 20%; margin-right: 20%;">
+    <span class="input-group-addon">学历</span>
+    <select id="education" class="form-control">
+      <option value="0">高中</option>
+      <option value="1">学士</option>
+      <option value="2">硕士</option>
+      <option value="3">博士</option>
+      <option value="4">其它</option>
+    </select>
+  </div>
+</div>
+
+
+<!-- 贯籍 -->
+<div class="addengineer-form-border">
+  <div class="input-group" style="margin-left: 20%; margin-right: 20%;">
+    <span class="input-group-addon">贯籍</span>
+    <input class="form-control" type="text" id="domicile" placeholder="贯籍" onkeyup="this.value=this.value.replace(/\s+/g,'')">
+  </div>
+</div>
+
+<!-- 地址 -->
+<div class="addengineer-form-border">
+  <div class="input-group" style="margin-left: 20%; margin-right: 20%;">
+    <span class="input-group-addon">地址</span>
+    <input class="form-control" type="text" id="address" placeholder="地址" onkeyup="this.value=this.value.replace(/\s+/g,'')">
+  </div>
+</div>
+
+<!-- 电话 -->
+<div class="addengineer-form-border">
+  <div class="input-group" style="margin-left: 20%; margin-right: 20%;">
+    <span class="input-group-addon">电话</span>
+    <input class="form-control" type="number" id="phone" placeholder="11位数字电话号码" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')">
+  </div>
+</div>
+
+<!-- 工龄 -->
+<div class="addengineer-form-border">
+  <div class="input-group" style="margin-left: 20%; margin-right: 20%;">
+    <span class="input-group-addon">工龄</span>
+    <select id="working_year" class="form-control">
+      <option value="1">1</option>
+    </select>
+  </div>
+</div>
+
+<!-- 工资 -->
+<div class="addengineer-form-border">
+  <div class="input-group" style="margin-left: 20%; margin-right: 20%;">
+    <span class="input-group-addon">工资</span>
+    <input class="form-control" type="number" id="salary" placeholder="工资" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')">
+  </div>
+</div>
+
+<div >
+  <button type="button" class="btn btn-success" style="margin-left: 45%; margin-right: 45% " id="submit">保存信息</button>
+</div>
+</body>
+</html>
