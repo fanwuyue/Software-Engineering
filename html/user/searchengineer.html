@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+  <script src="../static/js/user/searchengineer.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
   <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
@@ -38,21 +39,48 @@
                 <span class="input-group-addon">关键字</span>
                 <input type="text"  id="keyword" placeholder="搜索关键字">
               </div>
+
+              <div class="input-group">
+                <button type="button" class="btn btn-info" style="margin-top: 10%" id="search">搜索</button>
+              </div>
             </div>
           </form>
+
+          <div class="navbar-right">
+            <button type="button" class="btn btn-info" style="margin-top: 10%" id="quit">退出系统</button>
+          </div>
+
         <div class="nav navbar-nav navbar-right">
           <ul class="nav navbar-nav">
             <li><a href="./index.html">返回主页</a></li>
-            <li><a href="#"><i class="glyphicon glyphicon-log-in"></i>登出系统</a></li>
           </ul>
-        </div>
-
-        <div class="navbar-right">
-          <button type="button" class="btn btn-info" style="margin-top: 10%" id="search">搜索</button>
         </div>
       </div>
     </div>
 </nav>
+
+<div id="content" style="margin-left: 5%; margin-right:5%; background-color: rgb(255, 255, 255);">
+  <table class="table table-hover" id="table">
+      <thead>
+          <tr>
+          <th>编号</th>
+          <th>姓名</th>
+          <th>性别</th>
+          <th>出生日期</th>
+          <th>学历</th>
+          <th>贯籍</th>
+          <th>地址</th>
+          <th>电话</th>
+          <th>工龄</th>
+          <th>基本工资</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr>
+          </tr>
+      </tbody>
+  </table>
+</div>
 
 </body>
 </html>
